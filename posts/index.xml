@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tiny Hippo 团队博客</title>
+    <link>http://rookies-sysu.github.io/posts/</link>
+    <description>Recent content in Posts on Tiny Hippo 团队博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Apr 2018 10:54:50 +0800</lastBuildDate>
+    
+	<atom:link href="http://rookies-sysu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://rookies-sysu.github.io/posts/about/</link>
+      <pubDate>Thu, 12 Apr 2018 10:54:50 +0800</pubDate>
+      
+      <guid>http://rookies-sysu.github.io/posts/about/</guid>
+      <description> 小河马点餐是一个微信点餐小程序。它以微信为入口，使用手机进行点餐。小河马点餐相比传统点餐服务，除了支持传统的浏览、下单、付款的传统服务之外，还有以下几个特点：
+ 支持多人同时点餐 更加人性化的UI设计 and more  Team profile 目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下
+ 项目经理: Ecer23* 前端团队: BeAShaper*, Arurururu, Ecer23 后台团队: longjj*, Yunglinjy, liuzht  名字里带有 * 表示他/她是分项负责人
+Investigation 🦕项目流程图传送门，密码是 9PsW
+Vision Product Backlog Requirement specification Design Development guidelines Documentation Links  迭代文档 会议记录 需求分析  </description>
+    </item>
+    
+  </channel>
+</rss>
