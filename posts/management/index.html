@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>项目管理经验分享（一） - Tiny Hippo 团队博客</title>
+  
+  <meta name="description" content="作为团队的 PM，要让整个团队 run 起来不是一件容易的事情。团队集结完毕后，需要立刻熟悉团队成员的个性，并且要尽快进入团队协作的状态。同时，对于一个团队项目，需要的技术栈，对应技术栈需要分配的成员也是在不断探索，所以在这里记录下当 PM 的一些体会。
+任务安排 我们团队有四个男生，两个女生，还有一名外援。外援由于一些特殊原因安排他去做一个相对独立的部分，所以接下来不会仔细介绍。其余团队成员我会用他们的 Github ID 或者 Github ID 简称来代替。
+在第一次会议中，大家介绍了自己的掌握的知识栈了。基本所有人都只是会一些前端技术栈，除了 - longjj 会一些运维和部署的知识 - Ecr23 懂一点产品和设计的知识 - Aruru 不会前端
+所以有了 Dashboard - Team Profile 里面的任务分配
+其实本来我想的是每周开一次会，队内 longjj 建议每天都要记录KANBAN，所以我们团队整体迭代速度很快。任务安排下去后，前端领导人 BeAShaper 很快就做出了第一版的模型。相比之下由于后台没有太多需求，所以进展要还慢一些。在他们两位的带领下，我们快速做出了第一版原型，第一次迭代在清明节基本结束
+但是清明节后，由于团队几位核心成员去面试、比赛，剩下成员动力不足，所以整体停滞了两周到最近。总结一下，任务安排方面，做的好的： 1. PM 一定要选取适合的分团队领导，这样由小队长带领的团队推动迅速 2. 项目早期选择快速做出原型有利于团队内部互相磨合。我们快速的做出了第一个可运行的原型，同时大家也很熟悉了对方的开发能力和个人特点。至少对于 PM 来说在接下来安排任务的时候会更合理 3. 团队内最好半周见一次面。我们现在见面的频率比较适宜，周三小会议，周日大会议，快速跟进，小团队非常实用！
+做的不太好的： 1. 每天记录工作内容有点不现实，大家积极性不是很高，类似的 administration work 比较消耗大家的精力 2. 周期性的迭代应当有明确的目标。第一次迭代里面后台部分我觉得不是特别理想，因为目标不是很明确，结果就是后台除了 longjj 之外普遍没有做太多的工作，浪费了时间 3. 因为中途要面试和比赛，两位小组长也有自己的事情要做，所以整体工作停了半个月。这个是预期之外的，对大家整体积极性有一定的打击，以后要避免！
+分项进度 前端 前端用了很短时间就确定采用小程序作为技术栈，我觉得这个是非常明智的选择。小程序开发上手实在很快，而且可以直接在真机调试，效果比较直接。同时学习成本比较低，以后在做小项目的时候，如果是移动端，我会比较优先推荐小程序
+后台 后台组长选择 flask 开发，由于参与不是很多，所以不细讲
+UI设计 这次我 ECer23 同时也是设计师。虽然这么做不正规但是小团队也没办法了。设计工具采用的是 modao，因为这货天天给我发广告邮件 🙂。不过的确挺好用。">
+  <meta name="author" content="ECer23">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 团队博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 团队博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">项目管理经验分享（一）</h1>
+    <p class="post-meta">ECer23 · 2018.4.15</p>
+  </header>
+  <div class="post-content">
+
+<p>作为团队的 PM，要让整个团队 run 起来不是一件容易的事情。团队集结完毕后，需要立刻熟悉团队成员的个性，并且要尽快进入团队协作的状态。同时，对于一个团队项目，需要的技术栈，对应技术栈需要分配的成员也是在不断探索，所以在这里记录下当 PM 的一些体会。</p>
+
+<h2 id="任务安排">任务安排</h2>
+
+<p>我们团队有四个男生，两个女生，还有一名外援。外援由于一些特殊原因安排他去做一个相对独立的部分，所以接下来不会仔细介绍。其余团队成员我会用他们的 Github ID 或者 Github ID 简称来代替。</p>
+
+<p>在第一次会议中，大家介绍了自己的掌握的知识栈了。基本所有人都只是会一些前端技术栈，除了
+- longjj 会一些运维和部署的知识
+- Ecr23 懂一点产品和设计的知识
+- Aruru 不会前端</p>
+
+<p>所以有了 <a href="https://github.com/rookies-sysu/Dashboard#team-profile">Dashboard - Team Profile</a> 里面的任务分配</p>
+
+<p>其实本来我想的是每周开一次会，队内 longjj 建议每天都要记录KANBAN，所以我们团队整体迭代速度很快。任务安排下去后，前端领导人 BeAShaper 很快就做出了第一版的模型。相比之下由于后台没有太多需求，所以进展要还慢一些。在他们两位的带领下，我们快速做出了第一版原型，第一次迭代在清明节基本结束</p>
+
+<p>但是清明节后，由于团队几位核心成员去面试、比赛，剩下成员动力不足，所以整体停滞了两周到最近。总结一下，任务安排方面，做的好的：
+1. PM 一定要选取适合的分团队领导，这样由小队长带领的团队推动迅速
+2. 项目早期选择快速做出原型有利于团队内部互相磨合。我们快速的做出了第一个可运行的原型，同时大家也很熟悉了对方的开发能力和个人特点。至少对于 PM 来说在接下来安排任务的时候会更合理
+3. 团队内最好半周见一次面。我们现在见面的频率比较适宜，周三小会议，周日大会议，快速跟进，小团队非常实用！</p>
+
+<p>做的不太好的：
+1. 每天记录工作内容有点不现实，大家积极性不是很高，类似的 administration work 比较消耗大家的精力
+2. 周期性的迭代应当有明确的目标。第一次迭代里面后台部分我觉得不是特别理想，因为目标不是很明确，结果就是后台除了 longjj 之外普遍没有做太多的工作，浪费了时间
+3. 因为中途要面试和比赛，两位小组长也有自己的事情要做，所以整体工作停了半个月。这个是预期之外的，对大家整体积极性有一定的打击，以后要避免！</p>
+
+<h2 id="分项进度">分项进度</h2>
+
+<h3 id="前端">前端</h3>
+
+<p>前端用了很短时间就确定采用小程序作为技术栈，我觉得这个是非常明智的选择。小程序开发上手实在很快，而且可以直接在真机调试，效果比较直接。同时学习成本比较低，以后在做小项目的时候，如果是移动端，我会比较优先推荐小程序</p>
+
+<h3 id="后台">后台</h3>
+
+<p>后台组长选择 flask 开发，由于参与不是很多，所以不细讲</p>
+
+<h3 id="ui设计">UI设计</h3>
+
+<p>这次我 ECer23 同时也是设计师。虽然这么做不正规但是小团队也没办法了。设计工具采用的是 modao，因为这货天天给我发广告邮件 🙂。不过的确挺好用。</p>
+
+<p>一开始不是很有思路，我觉得如果用纸笔写下来的话可能思路会更开阔一些。这次我是直接先照着一个比较好看的 app 画了一个初稿，然后给前端组长看。商讨之后j提了一些意见，好像组长也不是很满意，但是突然有了一点想法。于是即照着 App Store 的样子做了一个类似的（主要是吸取了 App store 横向扩展的思路）</p>
+
+<p>现在的问题是，不知道小程序是否支持这种操作。如果不行的话估计要换设计</p>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 团队博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+

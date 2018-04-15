@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Docker 构建镜像入门，以 Python Flask 为例 - Tiny Hippo 团队博客</title>
+  
+  <meta name="description" content="[TOC]
+ 原文链接：Docker 构建镜像入门，以 Python Flask 为例
+为了完成中山大学系统分析与设计课程，在项目作业仓库中重新发布一次技术博客
+个人信息：罗剑杰 15331229 数字媒体技术
+ Docker 构建镜像入门，以 Python Flask 为例  实验环境： Ubuntu 16.04 LTS
+本文介绍如何自行构建一个封装了 python flask 的 docker 镜像，并且运行它的一个容器。
+ 什么是Docker Docker是一个操作系统容器管理工具，通过将应用打包到操作系统容器里面，从而让你能轻松管理和部署应用。
+容器 vs 虚拟机 容器可能不如虚拟机一样为人所熟知，但是它们是另外的一种提供操作系统虚拟化的方法。然而，他们与标准的虚拟机有很大的差异。
+标准的虚拟机通常包含一个完整的操作系统，OS软件包，最后包含一两个应用。它是通过一个向虚拟机提供了硬件虚拟化的Hypervisor来实现的，允许单个服务器运行很多独立的被当做虚拟游客（virtual guest）的操作系统。
+而容器与虚拟机的类似之处在于它们允许单个服务器运行多个操作环境（operating environment），然而这些环境不却是完整的操作系统。容器通常只包含必要的OS软件包和应用。他们通常不包含一个完整的操作系统或者硬件虚拟化。这也意味着比之虚拟机，容器的额外开销（overhead）更小。
+ 容器和虚拟机通常被视为不能共生的技术，然而这通常是一个误解。虚拟机面向物理服务器，提供可以能与其他虚拟机一起共享这些物理资源的，功能完善的操作环境。容器通常是用来通过对单一主机的一个进程进行隔离，来保证被隔离的进程无法与处于同一个系统的其他进程进行互动。实际上，比起完全的虚拟机，容器与BSD的Jail，chroot的进程更加类似。
+ Docker 自身并不是一个容器的运行时环境。 Docker 提供的是一种容器管理，打包和部署的方法。尽管这种类型的功能已经某一种程度地存在于虚拟机中，但在传统上，它们并不是为了绝大多数的容器方案而生的，而那些已经存在的，却又不如 Docker 一样容易使用且功能完善。
+安装 Docker sudo apt install docker sudo apt install docker.io  安装成功后，可以使用 docker ps 命令来检测是否正确安装：
+longj@longj-Daydream:~$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES  有时候会出现下面报错：">
+  <meta name="author" content="longjj">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 团队博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 团队博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">Docker 构建镜像入门，以 Python Flask 为例</h1>
+    <p class="post-meta">longjj · 2018.4.15</p>
+  </header>
+  <div class="post-content">
+
+<p>[TOC]</p>
+
+<blockquote>
+<p>原文链接：<a href="https://longjj.com/2018/04/03/Docker-%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%85%A5%E9%97%A8%EF%BC%8C%E4%BB%A5-Python-Flask-%E4%B8%BA%E4%BE%8B/">Docker 构建镜像入门，以 Python Flask 为例</a></p>
+
+<p>为了完成中山大学系统分析与设计课程，在项目作业仓库中重新发布一次技术博客</p>
+
+<p>个人信息：<code>罗剑杰 15331229 数字媒体技术</code></p>
+</blockquote>
+
+<h1 id="docker-构建镜像入门-以-python-flask-为例">Docker 构建镜像入门，以 Python Flask 为例</h1>
+
+<blockquote>
+<p>实验环境： Ubuntu 16.04 LTS</p>
+
+<p>本文介绍如何自行构建一个封装了 python flask 的 docker 镜像，并且运行它的一个容器。</p>
+</blockquote>
+
+<h2 id="什么是docker">什么是Docker</h2>
+
+<p>Docker是一个操作系统容器管理工具，通过将应用打包到操作系统容器里面，从而让你能轻松管理和部署应用。</p>
+
+<h2 id="容器-vs-虚拟机">容器 vs 虚拟机</h2>
+
+<p>容器可能不如虚拟机一样为人所熟知，但是它们是另外的一种提供操作系统虚拟化的方法。然而，他们与标准的虚拟机有很大的差异。</p>
+
+<p>标准的虚拟机通常包含一个完整的操作系统，OS软件包，最后包含一两个应用。它是通过一个向虚拟机提供了硬件虚拟化的Hypervisor来实现的，允许单个服务器运行很多独立的被当做虚拟游客（virtual guest）的操作系统。</p>
+
+<p>而容器与虚拟机的类似之处在于它们允许单个服务器运行多个操作环境（operating environment），然而这些环境不却是完整的操作系统。容器通常只包含必要的OS软件包和应用。他们通常不包含一个完整的操作系统或者硬件虚拟化。这也意味着比之虚拟机，容器的额外开销（overhead）更小。</p>
+
+<blockquote>
+<p>容器和虚拟机通常被视为不能共生的技术，然而这通常是一个误解。虚拟机面向物理服务器，提供可以能与其他虚拟机一起共享这些物理资源的，功能完善的操作环境。容器通常是用来通过对单一主机的一个进程进行隔离，来保证被隔离的进程无法与处于同一个系统的其他进程进行互动。实际上，比起完全的虚拟机，容器与BSD的Jail，chroot的进程更加类似。</p>
+</blockquote>
+
+<p>Docker 自身并不是一个容器的运行时环境。 Docker 提供的是一种容器管理，打包和部署的方法。尽管这种类型的功能已经某一种程度地存在于虚拟机中，但在传统上，它们并不是为了绝大多数的容器方案而生的，而那些已经存在的，却又不如 Docker 一样容易使用且功能完善。</p>
+
+<h2 id="安装-docker">安装 Docker</h2>
+
+<pre><code class="language-bash">sudo apt install docker
+sudo apt install docker.io
+</code></pre>
+
+<p>安装成功后，可以使用 <code>docker ps</code> 命令来检测是否正确安装：</p>
+
+<pre><code class="language-bash">longj@longj-Daydream:~$ docker ps 
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</code></pre>
+
+<p>有时候会出现下面报错：</p>
+
+<pre><code class="language-bash">ubuntu@VM-100-106-ubuntu:~$ docker ps 
+Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+</code></pre>
+
+<p>这个时候只需要在命令前面加上 <code>sudo</code> 即可。</p>
+
+<h2 id="docker-镜像">Docker 镜像</h2>
+
+<p>首先需要分清楚 docker image (镜像) 和 docker container (容器) 的区别：<strong>一个docker container 是一个特定 docker image 的运行实例</strong>。 我们先要在宿主机 (host) 上获取到一个 docker image， 然后再通过特定的 docker 命令来构建并运行一个 docker container。可以将 docker image 类比成你平时安装 Ubuntu 虚拟机时首先需要下载的 Ubuntu 镜像，将 docker container 类比成安装 Ubuntu 虚拟机的实例，显然，通过同一个镜像，你是可以安装多个互不影响的虚拟机的。</p>
+
+<p>其中获得一个 docker image 的方法有两个：
+1. 在 Dockhub 上直接 pull 下别人已经上传好的镜像。
+  <code>docker pull [OPTIONS] NAME[:TAG|@DIGEST]</code>
+2. 自己写 Dockerfile 去构建一个定制的镜像。</p>
+
+<p>现在我们的目标是要拿到一个 Python Flask 的镜像并且进行部署运行一个实例。</p>
+
+<h2 id="构建自定义的-python-flask-应用镜像">构建自定义的 Python Flask 应用镜像</h2>
+
+<p>为了Docker化一个 Python Flask 应用镜像，我们将要构建我们自己的Docker镜像，这意味要创建一个Dockerfile。</p>
+
+<p>在绝大多数的虚拟机环境中，假如你想要创建一个机器的镜像，你需要首先创建一个虚拟机，然后安装好操作系统，然后安装好应用程序，最后将其转化成一个模板或者镜像。然而，对于Docker来说，这些步骤都可以通过 Dockerfile 进行自动化。一个 Dockerfile 是一个可以向 Docker 提供构建指令的方式。我们将要创建一个可以用来部署一个最简单的 Flask 应用镜像的 Dockerfile 。</p>
+
+<h3 id="step-1-理解应用">Step 1 理解应用</h3>
+
+<p>项目内容和结构如下：</p>
+
+<pre><code class="language-bash">Web
+  ____ app.py
+  ____ requirements.txt
+  ____ Dockerfile
+</code></pre>
+
+<p>app.py :</p>
+
+<pre><code class="language-python">from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0')
+</code></pre>
+
+<p>requirements.txt:</p>
+
+<pre><code>Flask&gt;=0.10
+</code></pre>
+
+<h3 id="step-2-为你的应用写一个-dockerfile">Step 2 为你的应用写一个 Dockerfile</h3>
+
+<h4 id="1-用-from-来继承一个-docker-镜像">1. 用 <code>From</code> 来继承一个 Docker 镜像</h4>
+
+<p>Dockerfile 的第一条指令是FROM指令。这用来将一个已经存在的 Docker 镜像指定为基础镜像。这基本上为我们提供了继承另一个Docker镜像的方法。在我们这个场景中，我们可以通过指定 <code>ubuntu:16.04</code>使用 Ubuntu 16.04镜像。</p>
+
+<pre><code class="language-dockerfile">FROM ubuntu:16.04 
+MAINTAINER longjj &lt;blablabla@gmail.com&gt;
+ENV LANG C
+</code></pre>
+
+<p>除了FROM指令之外，还包含了一个MAINTAINER指令，其是用来显示 Dockerfile 的作者的。然后，使用 <code>ENV LANG C</code> 来解决后面安装 python3 时出现的 locale 问题。</p>
+
+<h4 id="2-安装-python-3-开发环境-亦可以选择-python-2-7">2. 安装 Python 3 开发环境（亦可以选择 Python 2.7）</h4>
+
+<pre><code class="language-dockerfile">RUN apt-get update \
+  &amp;&amp; apt-get install -y python3-pip python3-dev locales\
+  &amp;&amp; pip3 install --upgrade pip
+</code></pre>
+
+<h4 id="3-将当前目录里面的代码文件拷贝到镜像里面-并且安装-python-依赖">3. 将当前目录里面的代码文件拷贝到镜像里面，并且安装 Python 依赖</h4>
+
+<pre><code>COPY . /app
+WORKDIR /app
+RUN pip3 install -r requirements.txt
+</code></pre>
+
+<h4 id="4-设置-entrypoint-去告诉-docker-在这个-docker-container-中运行-python3-的命令-执行-app-py">4. 设置 <code>EntryPoint</code> 去告诉 Docker 在这个 docker container 中运行 <code>python3</code> 的命令，执行 <code>app.py</code></h4>
+
+<pre><code class="language-dockerfile">ENTRYPOINT [&quot;python3&quot;]
+CMD [&quot;app.py&quot;]
+</code></pre>
+
+<h4 id="5-总体的-dockerfile-如下">5. 总体的 Dockerfile 如下</h4>
+
+<pre><code class="language-dockerfile">## Dockerfile that generates an instance of www.longjj.com
+FROM ubuntu:16.04
+LABEL maintainer=&quot;longjj&quot;
+ENV LANG C
+
+RUN apt-get update \
+  &amp;&amp; apt-get install -y python3-pip python3-dev locales\
+  &amp;&amp; pip3 install --upgrade pip
+
+COPY . /app
+WORKDIR /app
+RUN pip3 install -r requirements.txt
+ENTRYPOINT [&quot;python3&quot;]
+CMD [&quot;app.py&quot;]
+</code></pre>
+
+<h3 id="step-3-构建你的-docker-image">Step 3 构建你的 Docker Image</h3>
+
+<p>在 Dockerfile 所在目录下运行下面的命令。</p>
+
+<pre><code class="language-bash">$ docker build -t helloworldapp:latest .
+</code></pre>
+
+<h3 id="step-4-使用你构建的镜像运行一个-docker-container">Step 4 使用你构建的镜像运行一个 Docker Container</h3>
+
+<pre><code class="language-bash">$ docker run -d -p 5000:5000 helloworldapp
+</code></pre>
+
+<p><code>-d</code>（detach，脱离）标志是用来告诉 Docker 在后台运行容器；另一个标志是 <code>-p</code>，这个标志能让用户来将一个端口从主机机器映射到容器中的一个端口。</p>
+
+<p>我们使用的 Flask 应用默认暴露了 5000 端口来提供HTTP服务。默认情况下，与Docker容器内部绑定的端口并没有与主机系统绑定。为了让外部的系统访问容器内部暴露的端口，这些端口必须通过使用 <code>-p</code> 标志从主机端口映射到容器端口。假如我们想要端口从主机的 8080 端口，映射到容器中的 5000 端口，我们可以通过使用这种语法 <code>-p 8080:80</code>。</p>
+
+<p>从上面的命令中，看起来我们的容器已经启动成功了。我们可以通过运行执行<code>docker ps</code> 来验证。</p>
+
+<pre><code>ubuntu@VM-100-106-ubuntu:~$ sudo docker ps 
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+de0b737586e6        tiny-hippo          &quot;python3 app.py&quot;         5 days ago          Up 5 days           0.0.0.0:5000-&gt;5000/tcp                     hippo
+</code></pre>
+
+<p>在浏览器中访问 <a href="http://localhost:5000">http://localhost:5000</a> , 你现在应该能够拿到 Python Flask 服务器返回的信息。</p>
+
+<h2 id="参考文献">参考文献</h2>
+
+<ol>
+<li><a href="http://bencane.com/2015/12/01/getting-started-with-docker-by-dockerizing-this-blog/#conversation">Getting started with Docker by Dockerizing this Blog</a></li>
+<li><a href="https://medium.com/@ikod/dockerize-simple-python-flask-app-62461efbe58e">Dockerize Simple Python Flask App</a></li>
+</ol>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 团队博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+
