@@ -1,127 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tiny Hippo 博客</title>
-    <link>http://rookies-sysu.github.io/</link>
-    <description>Recent content on Tiny Hippo 博客</description>
+    <title>Homework1s on Tiny Hippo 博客</title>
+    <link>http://rookies-sysu.github.io/homework1/</link>
+    <description>Recent content in Homework1s on Tiny Hippo 博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Apr 2018 22:21:38 +0800</lastBuildDate>
     
-	<atom:link href="http://rookies-sysu.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://rookies-sysu.github.io/homework1/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Flask-SQLAlchemy 学习报告</title>
-      <link>http://rookies-sysu.github.io/posts/flask_sql/</link>
-      <pubDate>Sun, 15 Apr 2018 22:21:38 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/flask_sql/</guid>
-      <description>实验环境 Ubuntu 16.04 LTS
-Anaconda 5.1
-python 3.6
-什么是Flask Flask是一个使用Python开发的“微型”Web框架，其“微型”的目的在于，保持一个“简单”并且“可扩展”的框架核心，为开发者提供一个选择自由的Web框架。基于此，开发者可以自由的选择数据库或模板引擎，为自己的Web应用做合适的选择。
-什么是SQLAlchemy SQLAlchemy是一个ORM（对象关系映射）。基于对目标数据库的原生SQL的抽象，它提供了与一长串数据库引擎的一致的API，其中包括MySQL，PostgreSQL，和SQLite。使得在你的模型和数据库间交换数据时，带来了便利，同时也简化了诸如换掉数据库引擎和迁移数据库模式等其他事情。
-什么是Flask-SQLAlchemy Flask-SQLAlchemy是一个Flask插件，使得在Flask中使用SQLAlchemy更为方便。它为SQLAlchemy设置了许多合理的配置，同时内置了一些session管理，这样就不用在应用代码里处理这种基础事务了。
-安装 Flask-SQLAlchemy pip install flask-sqlalchemy  数据库管理 1 配置数据库 首先初始化并配置Flask应用，然后用它来初始化SQLAlchemy数据库处理程序。为数据库配置使用一个instance文件夹，所以应该在初始化应用时加上instance_relative_config选项，然后调用app.config.from_pyfile。
-# myapp/__init__.py from flask import Flask from flask_sqlalchemy import SQLAlchemy app = Flask(__name__, instance_relative_config=True) app.config.from_object(&#39;config&#39;) app.config.from_pyfile(&#39;config.py&#39;) db = SQLAlchemy(app)  2 定义模型 Column，Integer，String，Model和其他的SQLAlchemy类都可以通过由Flask-SQLAlchemy构造的db对象访问。例如，定义一个储存用户信息的模型。每个用户有一个ID和一个用户名。
-# myapp/models.py from . import db class User(db.Model): id = db.Column(db.Integer, primary_key=True, autoincrement=True) username = db.Column(db.String(80), unique=True) def __init__(self, username): self.username = username def __repr__(self): return &#39;&amp;lt;User %r&amp;gt;&#39; % self.</description>
-    </item>
-    
-    <item>
-      <title>微信小程序事件和视图渲染</title>
-      <link>http://rookies-sysu.github.io/posts/wechat_applet/</link>
-      <pubDate>Sun, 15 Apr 2018 20:43:34 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/wechat_applet/</guid>
-      <description>微信小程序事件  什么是事件 事件类别 事件冒泡 事件绑定 事件对象详解  什么是事件 ####事件 * 一种用户行为 当用户长按图片、拖动等 * 一种通讯方式 当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码 ####事件的类别 * 点击事件 tap * 长按事件 longtap * 触摸事件 touchstart touchend touchmove touchcancel  touchend：手指触摸到手指离开，是正常的触摸结束  touchcancel：突然来了电话，页面被覆盖，等同于触摸事件被打断 * 其他 submit input 事件冒泡 ```   view 1 view 2 view 3    ``` ``` /**index.wxss**/ .view1 { height: 500rpx; width: 100%; background-color: khaki; } .view2 { height: 400rpx; width: 80%; background-color: rosybrown; } .</description>
-    </item>
-    
-    <item>
-      <title>技术学习报告&lt;1&gt;</title>
-      <link>http://rookies-sysu.github.io/posts/html/</link>
-      <pubDate>Sun, 15 Apr 2018 20:42:59 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/html/</guid>
-      <description>由于个人主要负责任务是前端的工作，因此第一阶段主要学习了html、css、JavaScript和微信小程序的框架。
-###1、html的学习 超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。 通过html可以编写静态网页，也可以通过编写js脚本添加用户与网页的交互。 以下为一小段html文本：
-&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;菜鸟教程(runoob.com)&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;我的第一个标题&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;我的第一个段落。&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  &amp;lt; !DOCTYPE html &amp;gt;声明为 HTML5 文档 &amp;lt; html &amp;gt; 元素是 HTML 页面的根元素 &amp;lt; head &amp;gt; 元素包含了文档的元（meta）数据 &amp;lt; title &amp;gt; 元素描述了文档的标题 &amp;lt; body &amp;gt; 元素包含了可见的页面内容 &amp;lt; h1 &amp;gt; 元素定义一个大标题 &amp;lt; p &amp;gt; 元素定义一个段落  将看到这样的效果  我的第一个标题 我的第一个段落。
-
- 有关html的其他元素，比如布局相关的&amp;lt;div&amp;gt;元素，链接相关的&amp;lt;a&amp;gt;元素等在网上都有许多详解。  ###2、css的学习 CSS 指层叠样式表 (Cascading Style Sheets)，样式定义了如何显示 HTML 元素，样式通常保存在外部的 .</description>
-    </item>
-    
-    <item>
-      <title>Docker 构建镜像入门，以 Python Flask 为例</title>
-      <link>http://rookies-sysu.github.io/posts/docker/</link>
-      <pubDate>Sun, 15 Apr 2018 20:06:57 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/docker/</guid>
-      <description>[TOC]
- 原文链接：Docker 构建镜像入门，以 Python Flask 为例
-为了完成中山大学系统分析与设计课程，在项目作业仓库中重新发布一次技术博客
-个人信息：罗剑杰 15331229 数字媒体技术
- Docker 构建镜像入门，以 Python Flask 为例  实验环境： Ubuntu 16.04 LTS
-本文介绍如何自行构建一个封装了 python flask 的 docker 镜像，并且运行它的一个容器。
- 什么是Docker Docker是一个操作系统容器管理工具，通过将应用打包到操作系统容器里面，从而让你能轻松管理和部署应用。
-容器 vs 虚拟机 容器可能不如虚拟机一样为人所熟知，但是它们是另外的一种提供操作系统虚拟化的方法。然而，他们与标准的虚拟机有很大的差异。
-标准的虚拟机通常包含一个完整的操作系统，OS软件包，最后包含一两个应用。它是通过一个向虚拟机提供了硬件虚拟化的Hypervisor来实现的，允许单个服务器运行很多独立的被当做虚拟游客（virtual guest）的操作系统。
-而容器与虚拟机的类似之处在于它们允许单个服务器运行多个操作环境（operating environment），然而这些环境不却是完整的操作系统。容器通常只包含必要的OS软件包和应用。他们通常不包含一个完整的操作系统或者硬件虚拟化。这也意味着比之虚拟机，容器的额外开销（overhead）更小。
- 容器和虚拟机通常被视为不能共生的技术，然而这通常是一个误解。虚拟机面向物理服务器，提供可以能与其他虚拟机一起共享这些物理资源的，功能完善的操作环境。容器通常是用来通过对单一主机的一个进程进行隔离，来保证被隔离的进程无法与处于同一个系统的其他进程进行互动。实际上，比起完全的虚拟机，容器与BSD的Jail，chroot的进程更加类似。
- Docker 自身并不是一个容器的运行时环境。 Docker 提供的是一种容器管理，打包和部署的方法。尽管这种类型的功能已经某一种程度地存在于虚拟机中，但在传统上，它们并不是为了绝大多数的容器方案而生的，而那些已经存在的，却又不如 Docker 一样容易使用且功能完善。
-安装 Docker sudo apt install docker sudo apt install docker.io  安装成功后，可以使用 docker ps 命令来检测是否正确安装：
-longj@longj-Daydream:~$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES  有时候会出现下面报错：</description>
-    </item>
-    
-    <item>
-      <title>Flask 学习笔记</title>
-      <link>http://rookies-sysu.github.io/posts/flask/</link>
-      <pubDate>Sun, 15 Apr 2018 20:05:48 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/flask/</guid>
-      <description>1.Flask的配置 使用virtualenv将应用隔离在一个虚拟环境中，该虚拟环境包含了应用依赖的文件的文件夹，在linux系统下安装virtualenv的操作：
-$ pip install virtualenv  随后利用virtualenv创建虚拟环境，文件夹名为venv：
-$ virtualenv venv New python executable in venv/bin/python Installing setuptools, pip...done.  通过运行该文件夹下的bin/activate脚本来激活虚拟环境
-$ source ~/venv/bin/activate  此时虚拟环境已运行，在该环境下安装相关的依赖包即可
-（venv）$ pip install flask  这样Flask的基本配置就完成了，后面在需要时同理可以添加其它相关的依赖包
-2.一个入门级别的应用 from flask import Flask app = Flask(__name__) @app.route(&#39;/&#39;) def hello_world(): return &#39;Hello World!&#39; if __name__ == &#39;__main__&#39;: app.run()  将该代码保存为app.py,然后在虚拟环境下用python解释器运行
-（venv）$ python app.py * Running on http://127.0.0.1:5000/  分析过程：
- 导入Flask类，该类实例作为WSGI应用程序。
- 创建该类实例app，当为单一模块时使用name
- 使用route()装饰器告诉Flask什么样的URL可以触发函数
- 定义函数在生成URL时采用，返回需要显示在用户浏览器的信息</description>
-    </item>
-    
-    <item>
-      <title>项目管理经验分享（一）</title>
-      <link>http://rookies-sysu.github.io/posts/management/</link>
-      <pubDate>Sun, 15 Apr 2018 19:24:24 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/management/</guid>
-      <description>作为团队的 PM，要让整个团队 run 起来不是一件容易的事情。团队集结完毕后，需要立刻熟悉团队成员的个性，并且要尽快进入团队协作的状态。同时，对于一个团队项目，需要的技术栈，对应技术栈需要分配的成员也是在不断探索，所以在这里记录下当 PM 的一些体会。
-任务安排 我们团队有四个男生，两个女生，还有一名外援。外援由于一些特殊原因安排他去做一个相对独立的部分，所以接下来不会仔细介绍。其余团队成员我会用他们的 Github ID 或者 Github ID 简称来代替。
-在第一次会议中，大家介绍了自己的掌握的知识栈了。基本所有人都只是会一些前端技术栈，除了
- longjj 会一些运维和部署的知识 Ecr23 懂一点产品和设计的知识 Aruru 不会前端  所以有了 Dashboard - Team Profile 里面的任务分配
-其实本来我想的是每周开一次会，队内 longjj 建议每天都要记录KANBAN，所以我们团队整体迭代速度很快。任务安排下去后，前端领导人 BeAShaper 很快就做出了第一版的模型。相比之下由于后台没有太多需求，所以进展要还慢一些。在他们两位的带领下，我们快速做出了第一版原型，第一次迭代在清明节基本结束
-但是清明节后，由于团队几位核心成员去面试、比赛，剩下成员动力不足，所以整体停滞了两周到最近。总结一下，任务安排方面，做的好的：
- PM 一定要选取适合的分团队领导，这样由小队长带领的团队推动迅速 项目早期选择快速做出原型有利于团队内部互相磨合。我们快速的做出了第一个可运行的原型，同时大家也很熟悉了对方的开发能力和个人特点。至少对于 PM 来说在接下来安排任务的时候会更合理 团队内最好半周见一次面。我们现在见面的频率比较适宜，周三小会议，周日大会议，快速跟进，小团队非常实用！  做的不太好的：
- 每天记录工作内容有点不现实，大家积极性不是很高，类似的 administration work 比较消耗大家的精力 周期性的迭代应当有明确的目标。第一次迭代里面后台部分我觉得不是特别理想，因为目标不是很明确，结果就是后台除了 longjj 之外普遍没有做太多的工作，浪费了时间 因为中途要面试和比赛，两位小组长也有自己的事情要做，所以整体工作停了半个月。这个是预期之外的，对大家整体积极性有一定的打击，以后要避免！  分项进度 前端 前端用了很短时间就确定采用小程序作为技术栈，我觉得这个是非常明智的选择。小程序开发上手实在很快，而且可以直接在真机调试，效果比较直接。同时学习成本比较低，以后在做小项目的时候，如果是移动端，我会比较优先推荐小程序
-后台 后台组长选择 flask 开发，由于参与不是很多，所以不细讲
-UI设计 这次我 ECer23 同时也是设计师。虽然这么做不正规但是小团队也没办法了。设计工具采用的是 modao，因为这货天天给我发广告邮件 🙂。不过的确挺好用。
-一开始不是很有思路，我觉得如果用纸笔写下来的话可能思路会更开阔一些。这次我是直接先照着一个比较好看的 app 画了一个初稿，然后给前端组长看。商讨之后j提了一些意见，好像组长也不是很满意，但是突然有了一点想法。于是即照着 App Store 的样子做了一个类似的（主要是吸取了 App store 横向扩展的思路）</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://rookies-sysu.github.io/posts/about/</link>
-      <pubDate>Thu, 12 Apr 2018 10:54:50 +0800</pubDate>
-      
-      <guid>http://rookies-sysu.github.io/posts/about/</guid>
-      <description> 小河马点餐是一个微信点餐小程序。它以微信为入口，使用手机进行点餐。小河马点餐相比传统点餐服务，除了支持传统的浏览、下单、付款的传统服务之外，还有以下几个特点：
- 支持多人同时点餐 更加人性化的UI设计 and more  Team profile 目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下
- 项目经理: Ecer23* 前端团队: BeAShaper*, Arurururu, Ecer23 后台团队: longjj*, Yunglinjy, liuzht  名字里带有 * 表示他/她是分项负责人
-Investigation 🦕项目流程图传送门，密码是 9PsW
-Vision Product Backlog Requirement specification Design Development guidelines Documentation Links  迭代文档 会议记录 需求分析  </description>
-    </item>
     
     <item>
       <title></title>

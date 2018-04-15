@@ -38,7 +38,52 @@
   </url>
   
   <url>
+    <loc>http://rookies-sysu.github.io/homework1/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/backend_coding_standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/design/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/frontend_coding_standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/investigation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/meetings/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/productbacklog/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/requirementspecification/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/timeprofile/</loc>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/vision/</loc>
+  </url>
+  
+  <url>
     <loc>http://rookies-sysu.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://rookies-sysu.github.io/homework1/</loc>
     <priority>0</priority>
   </url>
   

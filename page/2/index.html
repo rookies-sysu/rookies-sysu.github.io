@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Tiny Hippo 博客</title>
+  
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 博客">
+</head>
+<body class="list">
+  <header class="header">
+    
+    <h1 class="title"><a href="/"><span>🍱</span>Tiny Hippo 博客</a></h1>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+
+
+
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">前端代码规范说明 wxml规范 1. 标签位置与缩进  保证块元素、组件的开始符与结束符不在同一行，上下位置对齐，子元素在父元素内缩进两个空格。  &lt;swiper indicator-dots=&#34;{{indicatorDots}}&#34; autoplay=&#34;{{autoplay}}&#34; interval=&#34;{{interval}}&#34; duration=&#34;{{duration}}&#34;&gt; &lt;block wx:for=&#34;{{imgUrls}}&#34; wx:key=&#34;unique&#34;&gt; &lt;swiper-item&gt; &lt;image src=&#34;{{item}}&#34; class=&#34;slide-image&#34; /&gt; &lt;/swiper-item&gt; &lt;/block&gt; &lt;/swiper&gt;  尽量避免多余的父标签。 所有wxml标签必须有结束符&lt;/view&gt; &lt;/block&gt; &lt;/button&gt;等。  2. 标签属性顺序  class （class是为高而复用组件设计的，所以所以应处在第一位） id、name（id更加具体且应该尽量少使用，所以将它放在第二位） wx:if、wx:else、wx:for wx:data  3. id/class命名规则  遵循“内容优先，表现为辅”的基本原则 – 首先根据内容命名，如header、footer。若根据内容无法找到合适的命名，再结 合表现进行辅助，如col-main、blue-box。 一律小写，多个单词以’-‘连接 – 不能使用下划线和驼峰命名法，如main-nav。可基于最近的父元素名称作为前缀。 在不影响语义的情况下，可适当使用缩写 – 缩写只用来表示结构，如col、nav、btn等，不可自造缩写。 避免广告拦截词 – ad、ads、adv、banner、sponsor、gg、guangg、guanggao等，页面中尽量避免采用以上词汇来命名。  4. 注释规范 页面中使用注释划分结构块。
+&lt;view&gt; &lt;!-- 顶部轮播图 --&gt; &lt;swiper indicator-dots=&#34;{{indicatorDots}}&#34; autoplay=&#34;{{autoplay}}&#34; interval=&#34;{{interval}}&#34; duration=&#34;{{duration}}&#34;&gt; ... &lt;/swiper&gt; &lt;!...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/frontend_coding_standard/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">项目前期调研 1 选题方向 1.1 研究目的 调查当前社会青年人群对于点餐软件/程序的使用状况，探索一种适用于常规小餐店的点餐服务程序，并对国内市场上常见的点餐相关的软件应用进行竞品分析，确定必须服务和优化用户体验的服务。
+1.2 市场现状 随着社会经济快速发展，人们的消费水平有了普遍的提高，在吃食上有了更多可选的追求，然而在外吃饭时会经常性的发生“”排队点餐”的问题，消费者的时间大量用于排队等待点餐的情况，同时在点餐过程中还可能会出现服务员无法及时实现消费者的下单需求。
+1.3 目标人群 主要对象为年龄段18~28的青年人群，熟悉使用手机app，有微信支付/支付宝支付等在线付款的使用经历，具备现代化的生活消费方式。
+2 竞品分析 2.1 竞品选择  目的：进一步了解产品所属相关领域的发展程度和前景，对竞品进行多方面分析，探索产品的竞争优势，并对产品今后的设计提供参考方向和建议。 过程：选择生活边常见的点餐小程序进行分析，如i麦代劳、CoCo都可手机点单  2.2 竞品分析  CoCo都可手机点单  目标人群：喜欢喝饮品的人群 产品定位：即时使用的下单小程序 设计特点：色调明亮，提供服务周全合理 产品优劣： 优点：提供定位系统，操作简单，可分预约订单和即时订单 缺点：功能单一，交互一般  麦当劳  目标人群：喜欢快餐文化的人群 产品定位：微信小程序 设计特点：功能多样，有点餐、积分商城、麦有礼等使用模块 产品优劣： 优点：提供服务种类较多 缺点：产品附加功能太多，订单信息过于隐蔽，显示上不明确   2.3 竞品启发  产品理念：产品应突出自身核心服务，且服务要全面，加大差异化竞争 产品架构：采用标准化设计，保持与系统架构的统一 产品视觉：需要更高的使用舒适度，采用和谐的搭配，使色调均衡 产品交互：首页主功能突出，注意细节的简洁与详略之分，同时避免功能的相互继承、冲突。  3 用户调研 3.1 调研目的 为了了解用户在点餐小程序的确切需求，我们根据竞品分析的结果，采用用户访谈的方法，深入了解我们现在认识的机会点是否真的存在以及发现更多的潜在机会点。
+3.2 调研方法 用户访谈要根据产品设想人群特征，物色符合条件的人，并进行当面访谈或电话访谈
+3.3 调研过程  访谈对象1–大学生：  Q：请问您对于市场上常见的点餐app或小程序有所了解吗？比如说i麦当劳，美团外等。。
+A：有使用过，像在麦当劳时就是用小程序点餐的。
+Q：那请问您使用这个小程序的理由是什么？
+A：方便嘛，不用排队点餐。
+Q：在使用小程序的时候有遇到什么问题吗？
+A：它的订单显示比较奇怪，不好找，而且有时候会出现已付款但订单失败的问题。...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/investigation/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">会议记录 Week 6 - Apr.12 讨论的内容 技术栈 1. 由于无法调用微信支付api，讨论前端技术栈换不换
+功能 1. 中途退出的页面保存 2. 多人同时点餐 3. 加菜
+文档 1. 给每个人分配负责的文档
+讨论的结果 技术栈
+ 前端技术栈不换 暂时放弃微信支付  功能 1. 中途退出 - 退出时前端发送一个表单给后台记录，再次打开时后台返回表单 - 若切后台的时间较短可以由前端缓存
+. 多人同时点餐   全部缓存在购物车不区分用户 保留是否正在吃饭的状态   加菜 每次确认订单后重新生成订单选购新点的菜品  文档分工 1. 用例图
+– 罗剑杰先探索出一个例子，之后再分工一起完成 2. UI – 彭高 3. 规范 – 后台用谷歌的规范，前端用ESlint，马晓鹤 4. 技术博客 – dashboard，每人一篇 5. 前期调研 – 实地考察并写出报告，刘钟涛 6. 将文档整合
+– 林景仰 7. 会议记录 – 彭彩莹 8....</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/meetings/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">产品特性 我们期望打造出的产品有如下特性：
+ 菜谱多分类、多图多彩，点餐功能简单明了 通过微信点餐系统后台自由配置菜单信息，随时更换菜单 同一桌的顾客可以实现多方点餐且购物车同步实时更新 微信用户点餐后，客户和商家都同时收到信息提醒 对某菜品分类打标签，如“热卖”、“新品”等 后台可统计顾客点菜数据及管理顾客信息，便于实现推广 顾客可以在小程序内连续下单，账单累计  我们预计我们的项目可以在验收之前，完成除调用微信接口与发布上线等需在微信官方备案之外且用企业号开发之外的所有功能。...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/productbacklog/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary"> 1.Usecase Diagram ...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/requirementspecification/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">Team profile 目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下
+ 项目经理: Ecer23* 前端团队: BeAShaper*, Arurururu, Ecer23 后台团队: longjj*, Yunglinjy, liuzht  名字里带有 * 表示他/她是分项负责人...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/timeprofile/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
+    <h2 class="post-title"></h2>
+  </header>
+  <p class="post-summary">项目愿景 1 介绍  关键术语与词汇表 我们尝试解决的问题是什么 我们的商业理由是什么 涉众是谁？用户是谁？他们各自的需求是什么 产品的特性是什么 成果预估  围绕着“便捷”，”准确“，“节约成本”，”模式创新“等中心词汇，我们致力于打造一款广泛推广的手机点餐微信小程序，助力实现线下实体餐厅的智慧化。
+今天的餐饮行业，在菜品、地理位置等多方面存在各种竞争，降低成本已经是每个餐饮企业要考虑的问题。而消费者则希望在品尝佳肴的同时，不受等待服务人员点餐，等待结账付款的苦恼。 商家如果在店内使用我们推出的手机点餐小程序，消费者即可在手机端自助点餐，没有人工点餐的匆忙慌乱，也不会出现误记漏点等人工失误。只需购买一次小程序，即可在日后的经营中从消费者自助点击手机下单，到商家全自动接收订单，改善消费者点餐的体验，同时为商家在人力资源，餐厅经营上节约成本。
+2 收益 我们渴望打造出的微信小程序，给餐厅和顾客带来的益处包括但不限于：
+ 节约人力资源  餐厅无需设置专人负责给顾客点餐 * 节约推广费用
+传统餐厅每次修改或增加菜品之后，都要重新制作菜单，反复发放。使用小程序后，系统直接使用电子菜单，后台可随便更改菜单。 * 增加盈利能力
+在人流高峰时，餐厅可避免因服务不周带来的顾客流失 * 提高双方效率
+传统纸菜单从消费者勾选到服务员下单，每桌需要10分钟左右。餐厅使用我们的小程序点菜的方式，图文并茂的电子菜单上有标注推荐菜、时令菜等，顾客选好菜后，点击下单即可完成，通常只需几分钟。...</p>
+  <footer class="post-footer">
+    <p class="post-meta">0001.1.1</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/homework1/vision/"></a>
+</article>
+
+
+
+<footer class="list-footer">
+  <nav class="pagination">
+    
+    <a class="pagination-prev" href="/">← 上一页</a>
+    
+    
+  </nav>
+</footer>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
