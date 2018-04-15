@@ -48,6 +48,29 @@
 <article class="post first-entry">
   <header class="post-header">
     <span class="welcome-emoji">👉</span>
+    <h2 class="post-title">Flask-SQLAlchemy 学习报告</h2>
+  </header>
+  <p class="post-summary">实验环境 Ubuntu 16.04 LTS
+Anaconda 5.1
+python 3.6
+什么是Flask Flask是一个使用Python开发的“微型”Web框架，其“微型”的目的在于，保持一个“简单”并且“可扩展”的框架核心，为开发者提供一个选择自由的Web框架。基于此，开发者可以自由的选择数据库或模板引擎，为自己的Web应用做合适的选择。
+什么是SQLAlchemy SQLAlchemy是一个ORM（对象关系映射）。基于对目标数据库的原生SQL的抽象，它提供了与一长串数据库引擎的一致的API，其中包括MySQL，PostgreSQL，和SQLite。使得在你的模型和数据库间交换数据时，带来了便利，同时也简化了诸如换掉数据库引擎和迁移数据库模式等其他事情。
+什么是Flask-SQLAlchemy Flask-SQLAlchemy是一个Flask插件，使得在Flask中使用SQLAlchemy更为方便。它为SQLAlchemy设置了许多合理的配置，同时内置了一些session管理，这样就不用在应用代码里处理这种基础事务了。
+安装 Flask-SQLAlchemy pip install flask-sqlalchemy  数据库管理 1 配置数据库 首先初始化并配置Flask应用，然后用它来初始化SQLAlchemy数据库处理程序。为数据库配置使用一个instance文件夹，所以应该在初始化应用时加上instance_relative_config选项，然后调用app.config.from_pyfile。
+# myapp/__init__.py from flask import Flask from flask_sqlalchemy import SQLAlchemy app = Flask(__name__, instance_relative_config=True) app.config.from_object(&#39;config&#39;) app.config.from_pyfile(&#39;config.py&#39;) db = SQLAlchemy(app)  2 定义模型 Column，Integer，String，Model和其他的SQLAlchemy类都可以通过由Flask-SQLAlchemy构造的db对象访问。例如，定义一个储存用户信息的模型。每个用户有一个ID和一个用户名。
+# myapp/models.py from . import db class User(db.Model): id = db.Column(db.Integer, primary_key=True, autoincrement=True) username = db.Column(db.String(80), unique=True) def __init__(self, username): self.username = username def __repr__(self): return &#39;&lt;User %r&gt;&#39; % self....</p>
+  <footer class="post-footer">
+    <p class="post-meta">2018.4.15</p>
+  </footer>
+  <a class="post-link" href="http://rookies-sysu.github.io/posts/flask_sql/"></a>
+</article>
+
+
+
+
+<article class="post post-entry">
+  <header class="post-header">
+    
     <h2 class="post-title">微信小程序事件和视图渲染</h2>
   </header>
   <p class="post-summary">微信小程序事件  什么是事件 事件类别 事件冒泡 事件绑定 事件对象详解  什么是事件 ####事件 * 一种用户行为 当用户长按图片、拖动等 * 一种通讯方式 当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码 ####事件的类别 * 点击事件 tap * 长按事件 longtap * 触摸事件 touchstart touchend touchmove touchcancel  touchend：手指触摸到手指离开，是正常的触摸结束  touchcancel：突然来了电话，页面被覆盖，等同于触摸事件被打断 * 其他 submit input 事件冒泡 ```   view 1 view 2 view 3    ``` ``` /**index.wxss**/ .view1 { height: 500rpx; width: 100%; background-color: khaki; } .view2 { height: 400rpx; width: 80%; background-color: rosybrown; } ....</p>

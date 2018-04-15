@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Flask-SQLAlchemy 学习报告 - Tiny Hippo 博客</title>
+  
+  <meta name="description" content="实验环境 Ubuntu 16.04 LTS
+Anaconda 5.1
+python 3.6
+什么是Flask Flask是一个使用Python开发的“微型”Web框架，其“微型”的目的在于，保持一个“简单”并且“可扩展”的框架核心，为开发者提供一个选择自由的Web框架。基于此，开发者可以自由的选择数据库或模板引擎，为自己的Web应用做合适的选择。
+什么是SQLAlchemy SQLAlchemy是一个ORM（对象关系映射）。基于对目标数据库的原生SQL的抽象，它提供了与一长串数据库引擎的一致的API，其中包括MySQL，PostgreSQL，和SQLite。使得在你的模型和数据库间交换数据时，带来了便利，同时也简化了诸如换掉数据库引擎和迁移数据库模式等其他事情。
+什么是Flask-SQLAlchemy Flask-SQLAlchemy是一个Flask插件，使得在Flask中使用SQLAlchemy更为方便。它为SQLAlchemy设置了许多合理的配置，同时内置了一些session管理，这样就不用在应用代码里处理这种基础事务了。
+安装 Flask-SQLAlchemy pip install flask-sqlalchemy  数据库管理 1 配置数据库 首先初始化并配置Flask应用，然后用它来初始化SQLAlchemy数据库处理程序。为数据库配置使用一个instance文件夹，所以应该在初始化应用时加上instance_relative_config选项，然后调用app.config.from_pyfile。
+# myapp/__init__.py from flask import Flask from flask_sqlalchemy import SQLAlchemy app = Flask(__name__, instance_relative_config=True) app.config.from_object(&#39;config&#39;) app.config.from_pyfile(&#39;config.py&#39;) db = SQLAlchemy(app)  2 定义模型 Column，Integer，String，Model和其他的SQLAlchemy类都可以通过由Flask-SQLAlchemy构造的db对象访问。例如，定义一个储存用户信息的模型。每个用户有一个ID和一个用户名。
+# myapp/models.py from . import db class User(db.Model): id = db.Column(db.Integer, primary_key=True, autoincrement=True) username = db.Column(db.String(80), unique=True) def __init__(self, username): self.username = username def __repr__(self): return &#39;&lt;User %r&gt;&#39; % self.">
+  <meta name="author" content="">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">Flask-SQLAlchemy 学习报告</h1>
+    <p class="post-meta">2018.4.15</p>
+  </header>
+  <div class="post-content">
+
+<h2 id="实验环境">实验环境</h2>
+
+<p>Ubuntu 16.04 LTS</p>
+
+<p>Anaconda 5.1</p>
+
+<p>python 3.6</p>
+
+<h2 id="什么是flask">什么是Flask</h2>
+
+<p>Flask是一个使用Python开发的“微型”Web框架，其“微型”的目的在于，保持一个“简单”并且“可扩展”的框架核心，为开发者提供一个选择自由的Web框架。基于此，开发者可以自由的选择数据库或模板引擎，为自己的Web应用做合适的选择。</p>
+
+<h2 id="什么是sqlalchemy">什么是SQLAlchemy</h2>
+
+<p>SQLAlchemy是一个ORM（对象关系映射）。基于对目标数据库的原生SQL的抽象，它提供了与一长串数据库引擎的一致的API，其中包括MySQL，PostgreSQL，和SQLite。使得在你的模型和数据库间交换数据时，带来了便利，同时也简化了诸如换掉数据库引擎和迁移数据库模式等其他事情。</p>
+
+<h2 id="什么是flask-sqlalchemy">什么是Flask-SQLAlchemy</h2>
+
+<p>Flask-SQLAlchemy是一个Flask插件，使得在Flask中使用SQLAlchemy更为方便。它为SQLAlchemy设置了许多合理的配置，同时内置了一些session管理，这样就不用在应用代码里处理这种基础事务了。</p>
+
+<h2 id="安装-flask-sqlalchemy">安装 Flask-SQLAlchemy</h2>
+
+<pre><code class="language-shell">pip install flask-sqlalchemy
+</code></pre>
+
+<h2 id="数据库管理">数据库管理</h2>
+
+<h3 id="1-配置数据库">1 配置数据库</h3>
+
+<p>首先初始化并配置Flask应用，然后用它来初始化SQLAlchemy数据库处理程序。为数据库配置使用一个instance文件夹，所以应该在初始化应用时加上<code>instance_relative_config</code>选项，然后调用<code>app.config.from_pyfile</code>。</p>
+
+<pre><code class="language-python"># myapp/__init__.py
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__, instance_relative_config=True)
+
+app.config.from_object('config')
+app.config.from_pyfile('config.py')
+
+db = SQLAlchemy(app)
+</code></pre>
+
+<h3 id="2-定义模型">2 定义模型</h3>
+
+<p><code>Column</code>，<code>Integer</code>，<code>String</code>，<code>Model</code>和其他的SQLAlchemy类都可以通过由Flask-SQLAlchemy构造的<code>db</code>对象访问。例如，定义一个储存用户信息的模型。每个用户有一个ID和一个用户名。</p>
+
+<pre><code class="language-python"># myapp/models.py
+from . import db
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(80), unique=True)
+    
+    def __init__(self, username):
+        self.username = username
+
+    def __repr__(self):
+        return '&lt;User %r&gt;' % self.username
+</code></pre>
+
+<h3 id="3-数据库基本操作">3 数据库基本操作</h3>
+
+<ul>
+<li>创建表</li>
+</ul>
+
+<pre><code class="language-python">  from . import db
+  db.create_all()
+</code></pre>
+
+<ul>
+<li>删除表</li>
+</ul>
+
+<pre><code class="language-python">  db.drop_all()
+</code></pre>
+
+<ul>
+<li>创建行</li>
+</ul>
+
+<pre><code class="language-python">  # create object
+  user_Bob = User(username='Bob')
+  # add object to session
+  db.session.add(user_Bob)
+  # commit session to insert object into database
+  db.session.commit()
+</code></pre>
+
+<ul>
+<li>删除行</li>
+</ul>
+
+<pre><code class="language-python">  db.session.delete(user_Bob)
+  session.commit()
+</code></pre>
+
+<ul>
+<li>修改行</li>
+</ul>
+
+<pre><code class="language-python">  user_Bob.username = 'Bobb'
+  db.session.add(user_Bob)
+  session.commit()
+</code></pre>
+
+<ul>
+<li>查询行</li>
+</ul>
+
+<pre><code class="language-python">  Bob = User.query.filter_by(username='Bob')
+</code></pre>
+
+<p>​</p>
+
+<h2 id="参考文献">参考文献</h2>
+
+<ol>
+<li><a href="https://spacewander.github.io/explore-flask-zh">Flask之旅</a></li>
+<li><a href="http://www.pythondoc.com/flask-sqlalchemy/quickstart.html">Flask-SQLAlchemy 快速入门</a></li>
+<li><a href="https://segmentfault.com/a/1190000013155090">flask文档学习笔记1-快速入门</a></li>
+</ol>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+
