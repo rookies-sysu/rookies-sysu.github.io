@@ -55,12 +55,15 @@
 </ul>
 
 <h3 id="什么是事件">什么是事件</h3>
-####事件
+	  
+<h4> 事件 </h4>
+	  
 * 一种用户行为
  当用户长按图片、拖动等
 * 一种通讯方式
 当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码
-####事件的类别
+	 
+<h4> 事件的类别 </h4>
 
 * 点击事件 tap
 * 长按事件 longtap
@@ -72,8 +75,8 @@
 * 其他 submit input
 
 <h3 id="事件冒泡">事件冒泡</h3>
-```
-<!--index.wxml-->
+	  
+<pre><code>
 <!--index.wxml-->
 <view class="view1" bindtap='view1Click'>
     view 1
@@ -84,8 +87,9 @@
          </view>
     </view>
 </view>
-```
-```
+</code></pre>
+	  
+<pre><code>
 /**index.wxss**/
 .view1 {
   height: 500rpx;
@@ -102,8 +106,9 @@
   width: 60%;
   background-color: firebrick;
 }
-```
-```
+</code></pre>
+	  
+<pre><code>
 //事件处理函数
   view1Click:function() {
     console.log("view1Click")
@@ -114,10 +119,12 @@
   view3Click: function () {
     console.log("view3Click")
   },
-```
+</code></pre>
+	  
 点击`view3` ，控制台的输出如下：
 <img src="https://img-blog.csdn.net/20180415134958389?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70", width=80%>
 这种现象就叫冒泡事件，当我们点击一个子view的时候，它也会触发父view及父view的父view的被点击，所以控制台会连续提示三次点击事件。
+	  
 **点击，长按，触摸**属于冒泡事件，其余的事件为非冒泡事件。
 
 <h3 id="事件绑定">事件绑定</h3>
@@ -190,7 +197,9 @@
 <img src="https://img-blog.csdn.net/20180415142632113?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
 <img src="https://img-blog.csdn.net/20180415142813753?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
 可以看出<code>target</code>是触发事件源的组件，<code>currentTarget</code>是事件绑定的组件。
-#####<code>dataset</code>
+	
+##### <code>dataset</code>
+	
 目前我们的<code>dataset</code>内容都为空，这个数据从哪里来，又有什么用呢。
 <img src="https://img-blog.csdn.net/20180415143123881?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
 <code>dataset</code>是为了方便我们给view添加上我们自己制定的属性和数据。</p>
