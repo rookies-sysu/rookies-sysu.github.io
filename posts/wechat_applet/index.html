@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>微信小程序事件和视图渲染 - Tiny Hippo 博客</title>
+  
+  <meta name="description" content="微信小程序事件  什么是事件 事件类别 事件冒泡 事件绑定 事件对象详解  什么是事件 ####事件 * 一种用户行为 当用户长按图片、拖动等 * 一种通讯方式 当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码 ####事件的类别 * 点击事件 tap * 长按事件 longtap * 触摸事件 touchstart touchend touchmove touchcancel  touchend：手指触摸到手指离开，是正常的触摸结束  touchcancel：突然来了电话，页面被覆盖，等同于触摸事件被打断 * 其他 submit input 事件冒泡 ```   view 1 view 2 view 3    ``` ``` /**index.wxss**/ .view1 { height: 500rpx; width: 100%; background-color: khaki; } .view2 { height: 400rpx; width: 80%; background-color: rosybrown; } .">
+  <meta name="author" content="BeAShaper">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">微信小程序事件和视图渲染</h1>
+    <p class="post-meta">BeAShaper · 2018.4.15</p>
+  </header>
+  <div class="post-content">
+
+<h2 id="微信小程序事件">微信小程序事件</h2>
+
+<ul>
+<li><a href="#什么是事件">什么是事件</a></li>
+<li><a href="#事件类别">事件类别</a></li>
+<li><a href="#事件冒泡">事件冒泡</a></li>
+<li><a href="#事件绑定">事件绑定</a></li>
+<li><a href="#事件对象详解">事件对象详解</a></li>
+</ul>
+
+<h3 id="什么是事件">什么是事件</h3>
+####事件
+* 一种用户行为
+ 当用户长按图片、拖动等
+* 一种通讯方式
+当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码
+####事件的类别
+
+* 点击事件 tap
+* 长按事件 longtap
+* 触摸事件 touchstart touchend touchmove touchcancel
+
+> touchend：手指触摸到手指离开，是正常的触摸结束
+> touchcancel：突然来了电话，页面被覆盖，等同于触摸事件被打断
+
+* 其他 submit input
+
+<h3 id="事件冒泡">事件冒泡</h3>
+```
+<!--index.wxml-->
+<!--index.wxml-->
+<view class="view1" bindtap='view1Click'>
+    view 1
+    <view class="view2" bindtap='view2Click'>
+         view 2
+         <view class="view3" bindtap='view3Click'>
+            view 3
+         </view>
+    </view>
+</view>
+```
+```
+/**index.wxss**/
+.view1 {
+  height: 500rpx;
+  width: 100%;
+  background-color: khaki;
+}
+.view2 {
+  height: 400rpx;
+  width: 80%;
+  background-color: rosybrown;
+}
+.view3 {
+  height: 300rpx;
+  width: 60%;
+  background-color: firebrick;
+}
+```
+```
+//事件处理函数
+  view1Click:function() {
+    console.log("view1Click")
+  },
+  view2Click: function () {
+    console.log("view2Click")
+  },
+  view3Click: function () {
+    console.log("view3Click")
+  },
+```
+点击`view3` ，控制台的输出如下：
+<img src="https://img-blog.csdn.net/20180415134958389?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70", width=80%>
+这种现象就叫冒泡事件，当我们点击一个子view的时候，它也会触发父view及父view的父view的被点击，所以控制台会连续提示三次点击事件。
+**点击，长按，触摸**属于冒泡事件，其余的事件为非冒泡事件。
+
+<h3 id="事件绑定">事件绑定</h3>
+
+<ul>
+<li>bind绑定</li>
+<li>catch绑定</li>
+</ul>
+
+<p>上面我们的代码是用<code>bindtap</code>进行绑定的，如果换成<code>catchtap</code>进行事件绑定</p>
+
+<pre><code>&lt;!--index.wxml--&gt;
+&lt;view class=&quot;view1&quot; bindtap='view1Click'&gt;
+    view 1
+    &lt;view class=&quot;view2&quot; bindtap='view2Click'&gt;
+         view 2
+         &lt;view class=&quot;view3&quot; catchtap='view3Click'&gt;
+            view 3
+         &lt;/view&gt;
+    &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+
+<p>点击view3，只显示了view3被点击。
+<img src="https://img-blog.csdn.net/20180415135834801?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70", width=80%>
+点击view2，显示view2view1都被点击了。
+<img src="https://img-blog.csdn.net/20180415135953343?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70", width=80%>
+这就是<code>catch</code>和<code>bind</code>的区别。</p>
+
+<p><h3 id="事件对象详解">事件对象详解</h3>
+我们触发一个事件时，可以把该事件传递给相应的事件处理函数，下面我们将事件对象打印出来。</p>
+
+<pre><code>//事件处理函数
+  view1Click:function(event) {
+    console.log(&quot;view1Click&quot;)
+    console.log(event)
+  },
+  view2Click: function (event) {
+    console.log(&quot;view2Click&quot;)
+    console.log(event)
+  },
+  view3Click: function (event) {
+    console.log(&quot;view3Click&quot;)
+    console.log(event)
+  },
+</code></pre>
+
+<p>点击view3。
+<img src="https://img-blog.csdn.net/20180415140409909?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+展开其中一个事件。
+<img src="https://img-blog.csdn.net/20180415140647519?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" /></p>
+
+<p>#####<code>currentTarget</code>和 <code>target</code>
+<code>currentTarget</code>是被点击的view， <code>target</code>是目标的view，下面给各view设置id就可以说明清楚了。</p>
+
+<pre><code>&lt;!--index.wxml--&gt;
+&lt;view class=&quot;view1&quot; id=&quot;view1&quot; bindtap='view1Click'&gt;
+    view 1
+    &lt;view class=&quot;view2&quot; id=&quot;view2&quot; bindtap='view2Click'&gt;
+         view 2
+         &lt;view class=&quot;view3&quot; id=&quot;view3&quot; bindtap='view3Click'&gt;
+            view 3
+         &lt;/view&gt;
+    &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+
+<p>现在再点击view3，view3、view2和view1被点击打印出的事件分别如下。
+<img src="https://img-blog.csdn.net/20180415142532583?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+<img src="https://img-blog.csdn.net/20180415142632113?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+<img src="https://img-blog.csdn.net/20180415142813753?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+可以看出<code>target</code>是触发事件源的组件，<code>currentTarget</code>是事件绑定的组件。
+#####<code>dataset</code>
+目前我们的<code>dataset</code>内容都为空，这个数据从哪里来，又有什么用呢。
+<img src="https://img-blog.csdn.net/20180415143123881?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+<code>dataset</code>是为了方便我们给view添加上我们自己制定的属性和数据。</p>
+
+<pre><code class="language-&lt;!--index.wxml--&gt;">&lt;view class=&quot;view1&quot; id=&quot;view1&quot; bindtap='view1Click' data-title=&quot;新闻标题&quot; data-id=&quot;100&quot;&gt;
+    view 1
+    &lt;view class=&quot;view2&quot; id=&quot;view2&quot; bindtap='view2Click'&gt;
+         view 2
+         &lt;view class=&quot;view3&quot; id=&quot;view3&quot; bindtap='view3Click'&gt;
+            view 3
+         &lt;/view&gt;
+    &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180415151134389?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" /></p>
+
+<h2 id="小程序的视图与渲染">小程序的视图与渲染</h2>
+
+<ul>
+<li><a href="#组件的基本使用">组件的基本使用</a></li>
+<li><a href="#数据绑定">数据绑定</a></li>
+<li><a href="#渲染标签">渲染标签</a></li>
+<li><a href="#模板的使用">模板的使用</a></li>
+</ul>
+
+<p><h3 id="组件的基本使用">组件的基本使用</h3>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/component/">微信小程序开发者文档</a>
+简单的添加button组件实例：</p>
+
+<pre><code class="language-html">&lt;!--index.wxml--&gt;
+&lt;button type='default' hover-class='other-button-hover'&gt;default&lt;/button&gt;
+&lt;button type='primary'&gt;primary&lt;/button&gt;
+</code></pre>
+
+<p>编译后显示：
+<img src="https://img-blog.csdn.net/20180412210838637?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+<h3 id="数据绑定">数据绑定</h3>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/data.html">微信小程序开发者文档</a></p>
+
+<pre><code class="language-html">&lt;!--index.wxml--&gt;
+&lt;button type='default' hover-class='other-button-hover'&gt;default&lt;/button&gt;
+&lt;button type='primary'&gt;primary&lt;/button&gt;
+
+&lt;text&gt;{{text}}&lt;/text&gt;
+</code></pre>
+
+<p>双括号内是被绑定的数据，我们需要在<code>index.js</code>文件中给该数据赋值。
+<img src="https://img-blog.csdn.net/20180412211451536?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+编译之后，我们的页面就会出现text的内容：
+<img src="https://img-blog.csdn.net/20180412211618320?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+我们还可以为按钮设置绑定的文字：</p>
+
+<pre><code class="language-html">&lt;!--index.wxml--&gt;
+&lt;button type='default' hover-class='other-button-hover'&gt;default&lt;/button&gt;
+&lt;button type='primary'&gt;{{btnText}}&lt;/button&gt;
+
+&lt;text&gt;{{text}}&lt;/text&gt;
+</code></pre>
+
+<pre><code class="language-html">//index.js
+//获取应用实例
+var app = getApp()
+Page({
+  data: {
+    text : &quot;这里是内容&quot;,
+    btnText : &quot;这是按钮的内容&quot;,
+    motto: 'Hello World',
+    userInfo: {},
+    dots:true
+  },
+  ...
+})
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412211958446?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+如何动态更改绑定的数据的内容呢？我们可以给按钮添加一个点击事件，首先先来尝试添加一个点击事件。</p>
+
+<pre><code class="language-html">&lt;!--index.wxml中给button绑定点击事件btnClick--&gt;
+&lt;button type='primary' bindtap='btnClick'&gt;{{btnText}}&lt;/button&gt;
+</code></pre>
+
+<pre><code>// index.js中添加如下的函数
+ btnClick : function() {
+    console.log(&quot;按钮被点击了&quot;)
+  },
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412212938124?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" />
+点击按钮，后台会打印出我们要打印的内容，说明正常监听到了按钮的点击事件，下面通过点击按钮来实现动态改变数据。</p>
+
+<pre><code class="language-js">btnClick : function() {
+    console.log(&quot;按钮被点击了&quot;)
+    this.setData({text:&quot;这是新更改的内容&quot;})
+  },
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412213438453?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+点击按钮，原来<code>text</code>的内容为“这里是内容”，现在变成了“这是新更改的内容”，我们的动态更改数据就成功了，<code>js</code>文件中更改数据都是调用下面这个函数。</p>
+
+<pre><code>this.setData({
+	...
+	})
+</code></pre>
+
+<p><h3 id="渲染标签">渲染标签</h3>
+<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/data.html">微信小程序开发者文档</a>
+微信小程序为我们提供了两种类型的渲染标签，一种是条件标签。</p>
+
+<pre><code class="language-html">&lt;!--index.wxml--&gt;
+&lt;button type='default' hover-class='other-button-hover'&gt;default&lt;/button&gt;
+&lt;button type='primary' bindtap='btnClick'&gt;{{btnText}}&lt;/button&gt;
+
+&lt;view wx:if=&quot;{{false}}&quot;&gt;{{text}}&lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412211958446?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%></p>
+
+<pre><code class="language-html">&lt;view wx:if=&quot;{{false}}&quot;&gt;{{text}}&lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412214132469?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+此时即使点击按钮，也不会显示任何内容，因为条件是永假的，所以<code>text</code>的内容永远不会显示。
+现在添加一个变量<code>show</code>来控制内容的显示与否。</p>
+
+<pre><code class="language-html">data: {
+    text : &quot;这里是内容&quot;,
+    btnText : &quot;这是按钮的内容&quot;,
+    show : true,
+    ...
+  },
+ btnClick : function() {
+    console.log(&quot;按钮被点击了&quot;)
+    var isShow = this.data.show
+    this.setData({text:&quot;这是新更改的内容&quot;, show:!isShow})
+  },
+</code></pre>
+
+<pre><code class="language-html">&lt;view wx:if=&quot;{{show}}&quot;&gt;{{text}}&lt;/view&gt;
+</code></pre>
+
+<p>这时再点击按钮，则该<code>view</code>会连续地切换显示与不显示。下面再添加一个<code>else</code>标签。</p>
+
+<pre><code class="language-html">&lt;view wx:if=&quot;{{show}}&quot;&gt;{{text}} 1 &lt;/view&gt;
+&lt;view wx:else&gt;{{text}} 2 &lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412215221587?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+<img src="https://img-blog.csdn.net/20180412215243730?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+这样因为上下两个标签一个条件为真，另一个就为假，所以会轮换地显示1和2。
+除了条件标签外，还有循环标签。
+在<code>index.wxml</code> 中添加一个循环渲染标签，循环的数组里共有三个元素，所以界面会显示三次“循环内容&hellip;”。</p>
+
+<pre><code class="language-html">&lt;view wx:for=&quot;{{['aaa','bbb','ccc']}}&quot;&gt;
+   循环内容...
+&lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412215924367?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+循环的数组更常见的是data中定义的数组，<code>{{item}}</code> 代表数组的每一个元素。</p>
+
+<pre><code class="language-html">data: {
+    text : &quot;这里是内容&quot;,
+    btnText : &quot;这是按钮的内容&quot;,
+    show : true,
+    news: ['aaa', 'bbb', 'ccc'],
+   ...
+  },
+</code></pre>
+
+<pre><code class="language-html">&lt;view wx:for=&quot;{{news}}&quot;&gt; {{item}} &lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180412235842612?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+如果不想让我们循环数组的元素名为<code>item</code>，我们也可以更改它的名字。</p>
+
+<pre><code>&lt;view wx:for=&quot;{{news}}&quot; wx:for-item=&quot;itemx&quot;&gt; {{itemx}} &lt;/view&gt;
+</code></pre>
+
+<p>还可以通过<code>index</code> 来显示当前循环的索引。</p>
+
+<pre><code>&lt;view wx:for=&quot;{{news}}&quot; wx:for-item=&quot;itemx&quot;&gt; {{index}} {{itemx}} &lt;/view&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180413000640504?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+现在来试试动态更改news数组的值，再次在点击按钮的事件中添加一些操作。</p>
+
+<pre><code>btnClick : function() {
+    console.log(&quot;按钮被点击了&quot;)
+    var isShow = this.data.show
+    var newsData = this.data.news
+    newsData.shift()  // 删除第一个元素
+    this.setData({text:&quot;这是新更改的内容&quot;, show:!isShow, news:newsData})
+  },
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180413001152533?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+点击按钮后<code>bbb</code>变成了第一个元素，数组的动容实现了动态更改，页面的显示内容也由于和数组的变化而实时地发生了改变。
+<code>index</code> 的名字也是可以更改的，方法和<code>item</code> 的类似。</p>
+
+<pre><code>&lt;view wx:for=&quot;{{news}}&quot; wx:for-item=&quot;itemx&quot; wx:for-index=&quot;indexx&quot;&gt; {{indexx}} {{itemx}} &lt;/view&gt;
+</code></pre>
+
+<p><h3 id="模板的使用">模板的使用</h3>
+我们的小程序中，可能很多页面都是使用同一个顶部与同一个底部，这一部分的代码就可以被很多页面所共用，这种情况下，我们就可以把这部分内容单独提取成一个模板，每个页面都将其加载进来即可。
+在Pages目录下新建一个目录名为template，在其下新建一个wxml文件，我们在这个文件里写我们的模板。
+<img src="https://img-blog.csdn.net/20180413001929730?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=30%>
+<img src="https://img-blog.csdn.net/20180413002101232?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+然后，在其他页面要显示这个模板的地方，将这个wxml包含进来。
+<img src="https://img-blog.csdn.net/20180413002455939?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=60%>
+效果如下：
+<img src="https://img-blog.csdn.net/20180413002552399?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+还有另一种方式添加模板，我们再在template目录下新建一个footer.wxml文件，编写另外一种方式的模板。
+<img src="https://img-blog.csdn.net/20180413003348476?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+<code>&lt;template&gt;</code> 不能通过<code>include</code> 的方式加载，要用<code>import</code>。
+<img src="https://img-blog.csdn.net/20180413003450488?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=60%>
+<img src="https://img-blog.csdn.net/20180413003542330?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%>
+每个页面要在模板中显示的数据可能不同，这时我们可以给模板中添加绑定的数据：</p>
+
+<pre><code>&lt;template name=&quot;footer&quot;&gt; 这里是底部内容 - {{text}} &lt;/template&gt;
+</code></pre>
+
+<p>在显示模板处给模板中的数据赋值：</p>
+
+<pre><code>&lt;import src=&quot;../template/footer&quot; /&gt;
+&lt;template is=&quot;footer&quot; data=&quot;{{text:'导入设置的内容'}}&quot;/&gt;
+</code></pre>
+
+<p><img src="https://img-blog.csdn.net/20180413004106224?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JlYXNoYXBlcl8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width=50%></p>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+

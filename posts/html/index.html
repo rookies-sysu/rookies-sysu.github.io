@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>技术学习报告&lt;1&gt; - Tiny Hippo 博客</title>
+  
+  <meta name="description" content="由于个人主要负责任务是前端的工作，因此第一阶段主要学习了html、css、JavaScript和微信小程序的框架。
+###1、html的学习 超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。 通过html可以编写静态网页，也可以通过编写js脚本添加用户与网页的交互。 以下为一小段html文本：
+&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&quot;utf-8&quot;&gt; &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;我的第一个标题&lt;/h1&gt; &lt;p&gt;我的第一个段落。&lt;/p&gt; &lt;/body&gt; &lt;/html&gt;  &lt; !DOCTYPE html &gt;声明为 HTML5 文档 &lt; html &gt; 元素是 HTML 页面的根元素 &lt; head &gt; 元素包含了文档的元（meta）数据 &lt; title &gt; 元素描述了文档的标题 &lt; body &gt; 元素包含了可见的页面内容 &lt; h1 &gt; 元素定义一个大标题 &lt; p &gt; 元素定义一个段落  将看到这样的效果  我的第一个标题 我的第一个段落。
+
+ 有关html的其他元素，比如布局相关的&lt;div&gt;元素，链接相关的&lt;a&gt;元素等在网上都有许多详解。  ###2、css的学习 CSS 指层叠样式表 (Cascading Style Sheets)，样式定义了如何显示 HTML 元素，样式通常保存在外部的 .">
+  <meta name="author" content="Arurururu">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">技术学习报告&lt;1&gt;</h1>
+    <p class="post-meta">Arurururu · 2018.4.15</p>
+  </header>
+  <div class="post-content"><p>由于个人主要负责任务是前端的工作，因此第一阶段主要学习了html、css、JavaScript和微信小程序的框架。</p>
+
+<p>###1、html的学习
+    超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。
+    通过html可以编写静态网页，也可以通过编写js脚本添加用户与网页的交互。
+    以下为一小段html文本：</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;我的第一个标题&lt;/h1&gt;
+    &lt;p&gt;我的第一个段落。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<pre><code>&lt; !DOCTYPE html &gt;声明为 HTML5 文档
+&lt; html &gt; 元素是 HTML 页面的根元素
+&lt; head &gt; 元素包含了文档的元（meta）数据
+&lt; title &gt; 元素描述了文档的标题
+&lt; body &gt; 元素包含了可见的页面内容
+&lt; h1 &gt; 元素定义一个大标题
+&lt; p &gt; 元素定义一个段落
+</code></pre>
+
+<p>将看到这样的效果
+<body>
+    <h1>我的第一个标题</h1>
+    <p>我的第一个段落。</p>
+</body></p>
+
+<pre><code>    有关html的其他元素，比如布局相关的&lt;div&gt;元素，链接相关的&lt;a&gt;元素等在网上都有许多详解。
+</code></pre>
+
+<p>###2、css的学习
+    CSS 指层叠样式表 (Cascading Style Sheets)，样式定义了如何显示 HTML 元素，样式通常保存在外部的 .css 文件中。
+    通过仅仅编辑一个简单的 CSS 文档，外部样式表可以改变站点中所有页面的布局和外观。
+    CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:
+ <img src="http://www.runoob.com/wp-content/uploads/2013/07/632877C9-2462-41D6-BD0E-F7317E4C42AC.jpg" alt="这里写图片描述" /></p>
+
+<pre><code>选择器通常是需要改变样式的 HTML 元素。
+每条声明由一个属性和一个值组成。
+属性是希望设置的样式属性。每个属性有一个值。属性和值被冒号分开。
+若要在HTML元素中设置CSS样式，需要在元素中设置&quot;id&quot; 和 &quot;class&quot;选择器。
+例如：将id=&quot;para&quot;的元素样式设为文本居中，字体颜色为红色
+</code></pre>
+
+<pre><code class="language-html">#para
+{
+    text-align:center;
+    color:red;
+}
+</code></pre>
+
+<pre><code>将class=&quot;center&quot;的元素的样式设为文本居中(class选择器可以应用在多个元素上)：
+</code></pre>
+
+<pre><code class="language-html">.center {text-align:center;}
+</code></pre>
+
+<pre><code> 也可以选择将css应用在特定html元素的某个class上：
+</code></pre>
+
+<pre><code class="language-html">p.center {text-align:center;}
+</code></pre>
+
+<pre><code>还有许多属性比如背景（background）、字体（font）、定位（position）等都可以设置。
+</code></pre>
+
+<p>###3、微信小程序的学习
+    微信小程序包括了下面四种文件：
+        .json 后缀的 JSON 配置文件
+        .wxml 后缀的 WXML 模板文件
+        .wxss 后缀的 WXSS 样式文件
+        .js 后缀的 JS 脚本逻辑文件</p>
+
+<pre><code>其中json文件用于配置小程序，比如app.json 是对当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超
+时时间、底部 tab 等。
+wxml和wxss分别对应html和css的功能，是微信小程序自定义的标记语言，简化并扩展了html和css。
+
+比如，在wxml中可以通过wx:if来条件渲染，通过wx:for来列表渲染。
+数据绑定可以通过{{}}将变量括住，然后在.js中初始化、赋值，比如要绑定一个view元素内的显示内容content:
+</code></pre>
+
+<pre><code class="language-html">&lt;!-- wxml --&gt;
+&lt;view&gt;{{content}}&lt;/view&gt;
+
+</code></pre>
+
+<pre><code class="language-javascript">Page({
+ data: {
+ /**初始化**/
+    content:&quot;内容&quot;,
+  },
+  
+ onLoad: function() {
+	 this.setData({
+	    content:&quot;hello&quot;,
+	  })
+ }
+)}
+</code></pre>
+
+<pre><code>在wxss中，还新增了尺寸单位rpx免去在不同设备的换算烦恼。
+
+通过js文件可以定义与用户交互的事件响应，可以在各生命周期函数中定义不同动作，比如可以在 onLoad 中获取打开当前页面
+所调用的 query 参数，且小程序提供了许多微信相关的api，比如微信支付，获取用户昵称、头像等，十分便利。
+
+小程序用到多少个页面就在pages目录下写多少个文件夹，每个文件夹中都包含上述四种文件，比如pages/logs, 微信客
+户端会先根据logs.json 配置生成一个界面，顶部的颜色和文字你都可以在这个 json 文件里边定义好。紧接着客户端就会装
+载这个页面的WXML结构和WXSS 样式,最后客户端会装载logs.js,页面就呈现出来了。
+
+小程序有许多组件，和html大都类似，且官方提供了许多文档供学习和使用，是完成作业的一个好的平台。
+</code></pre>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+
