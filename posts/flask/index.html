@@ -8,16 +8,17 @@
   
   <title>Flask 学习笔记 - Tiny Hippo 博客</title>
   
-  <meta name="description" content="##1.Flask的配置
-使用virtualenv将应用隔离在一个虚拟环境中，该虚拟环境包含了应用依赖的文件的文件夹，在linux系统下安装virtualenv的操作：
+  <meta name="description" content="1.Flask的配置 使用virtualenv将应用隔离在一个虚拟环境中，该虚拟环境包含了应用依赖的文件的文件夹，在linux系统下安装virtualenv的操作：
 $ pip install virtualenv  随后利用virtualenv创建虚拟环境，文件夹名为venv：
 $ virtualenv venv New python executable in venv/bin/python Installing setuptools, pip...done.  通过运行该文件夹下的bin/activate脚本来激活虚拟环境
 $ source ~/venv/bin/activate  此时虚拟环境已运行，在该环境下安装相关的依赖包即可
 （venv）$ pip install flask  这样Flask的基本配置就完成了，后面在需要时同理可以添加其它相关的依赖包
-##2.一个入门级别的应用
-from flask import Flask app = Flask(__name__) @app.route(&#39;/&#39;) def hello_world(): return &#39;Hello World!&#39; if __name__ == &#39;__main__&#39;: app.run()  将该代码保存为app.py,然后在虚拟环境下用python解释器运行
+2.一个入门级别的应用 from flask import Flask app = Flask(__name__) @app.route(&#39;/&#39;) def hello_world(): return &#39;Hello World!&#39; if __name__ == &#39;__main__&#39;: app.run()  将该代码保存为app.py,然后在虚拟环境下用python解释器运行
 （venv）$ python app.py * Running on http://127.0.0.1:5000/  分析过程：
-1.导入Flask类，该类实例作为WSGI应用程序。 2.创建该类实例app，当为单一模块时使用__name__ 3.使用route()装饰器告诉Flask什么样的URL可以触发函数 4.定义函数在生成URL时采用，返回需要显示在用户浏览器的信息 5.用run()函数在本地服务器上运行，其中 if __name__ == &#39;__main__&#39;: 确保服务器只会在该脚本被 Python 解释器直接执行的时候才会运行  ">
+ 导入Flask类，该类实例作为WSGI应用程序。
+ 创建该类实例app，当为单一模块时使用name
+ 使用route()装饰器告诉Flask什么样的URL可以触发函数
+ 定义函数在生成URL时采用，返回需要显示在用户浏览器的信息">
   <meta name="author" content="liuzht">
   
   
@@ -51,7 +52,9 @@ from flask import Flask app = Flask(__name__) @app.route(&#39;/&#39;) def hello_
     <h1 class="post-title">Flask 学习笔记</h1>
     <p class="post-meta">liuzht · 2018.4.15</p>
   </header>
-  <div class="post-content"><p>##1.Flask的配置</p>
+  <div class="post-content">
+
+<h2 id="1-flask的配置">1.Flask的配置</h2>
 
 <p>使用virtualenv将应用隔离在一个虚拟环境中，该虚拟环境包含了应用依赖的文件的文件夹，在linux系统下安装virtualenv的操作：</p>
 
@@ -77,7 +80,7 @@ Installing setuptools, pip...done.
 
 <p>这样Flask的基本配置就完成了，后面在需要时同理可以添加其它相关的依赖包</p>
 
-<p>##2.一个入门级别的应用</p>
+<h2 id="2-一个入门级别的应用">2.一个入门级别的应用</h2>
 
 <pre><code>from flask import Flask
 app = Flask(__name__)
@@ -98,16 +101,17 @@ if __name__ == '__main__':
 
 <p>分析过程：</p>
 
-<pre><code>1.导入Flask类，该类实例作为WSGI应用程序。
+<ol>
+<li><p>导入Flask类，该类实例作为WSGI应用程序。</p></li>
 
-2.创建该类实例app，当为单一模块时使用__name__
+<li><p>创建该类实例app，当为单一模块时使用<strong>name</strong></p></li>
 
-3.使用route()装饰器告诉Flask什么样的URL可以触发函数
+<li><p>使用route()装饰器告诉Flask什么样的URL可以触发函数</p></li>
 
-4.定义函数在生成URL时采用，返回需要显示在用户浏览器的信息
+<li><p>定义函数在生成URL时采用，返回需要显示在用户浏览器的信息</p></li>
 
-5.用run()函数在本地服务器上运行，其中 if __name__ == '__main__': 确保服务器只会在该脚本被 Python 解释器直接执行的时候才会运行
-</code></pre>
+<li><p>用run()函数在本地服务器上运行，其中 if <strong>name</strong> == &lsquo;<strong>main</strong>&lsquo;: 确保服务器只会在该脚本被 Python 解释器直接执行的时候才会运行</p></li>
+</ol>
 </div>
   <footer class="post-footer">
     
