@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Homework 1 - Tiny Hippo 博客</title>
+  
+  <meta name="description" content="About 小河马点餐是一个微信点餐小程序。它以微信为入口，使用手机进行点餐。小河马点餐相比传统点餐服务，除了支持传统的浏览、下单、付款的传统服务之外，还有以下几个特点：
+ 支持多人同时点餐 更加人性化的UI设计 and more  Team profile 目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下
+ 项目经理: Ecer23* 前端团队: BeAShaper*, Arurururu, Ecer23 后台团队: longjj*, Yunglinjy, liuzht  名字里带有 * 表示他/她是分项负责人
+Investigation 🦕项目流程图传送门，密码是 9PsW
+1 选题方向 1.1 研究目的 调查当前社会青年人群对于点餐软件/程序的使用状况，探索一种适用于常规小餐店的点餐服务程序，并对国内市场上常见的点餐相关的软件应用进行竞品分析，确定必须服务和优化用户体验的服务。
+1.2 市场现状 随着社会经济快速发展，人们的消费水平有了普遍的提高，在吃食上有了更多可选的追求，然而在外吃饭时会经常性的发生“”排队点餐”的问题，消费者的时间大量用于排队等待点餐的情况，同时在点餐过程中还可能会出现服务员无法及时实现消费者的下单需求。
+1.3 目标人群 主要对象为年龄段18~28的青年人群，熟悉使用手机app，有微信支付/支付宝支付等在线付款的使用经历，具备现代化的生活消费方式。
+2 竞品分析 2.1 竞品选择  目的：进一步了解产品所属相关领域的发展程度和前景，对竞品进行多方面分析，探索产品的竞争优势，并对产品今后的设计提供参考方向和建议。 过程：选择生活边常见的点餐小程序进行分析，如i麦代劳、CoCo都可手机点单  2.2 竞品分析  CoCo都可手机点单  目标人群：喜欢喝饮品的人群 产品定位：即时使用的下单小程序 设计特点：色调明亮，提供服务周全合理 产品优劣： 优点：提供定位系统，操作简单，可分预约订单和即时订单 缺点：功能单一，交互一般  麦当劳  目标人群：喜欢快餐文化的人群 产品定位：微信小程序 设计特点：功能多样，有点餐、积分商城、麦有礼等使用模块 产品优劣： 优点：提供服务种类较多 缺点：产品附加功能太多，订单信息过于隐蔽，显示上不明确   2.">
+  <meta name="author" content="Tiny Hippo">
+  
+  
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.ico">
+  
+  <meta name="generator" content="Hugo 0.37.1">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="Tiny Hippo 博客">
+</head>
+<body class="single">
+  <header class="header">
+    
+    <p class="title"><a href="/"><span>🍱</span>Tiny Hippo 博客</a></p>
+    
+    <button class="menu-toggle" type="button"></button>
+    <nav class="menu">
+      <ul>
+        
+        
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+
+<article class="post post-view">
+  <header class="post-header">
+    <h1 class="post-title">Homework 1</h1>
+    <p class="post-meta">Tiny Hippo · 2018.4.15</p>
+  </header>
+  <div class="post-content">
+
+<h1 id="about">About</h1>
+
+<p><strong>小河马点餐</strong>是一个微信点餐小程序。它以微信为入口，使用手机进行点餐。小河马点餐相比传统点餐服务，除了支持传统的浏览、下单、付款的传统服务之外，还有以下几个特点：</p>
+
+<ul>
+<li>支持多人同时点餐</li>
+<li>更加人性化的UI设计</li>
+<li>and more</li>
+</ul>
+
+<h1 id="team-profile">Team profile</h1>
+
+<p>目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下</p>
+
+<ul>
+<li>项目经理: Ecer23*</li>
+<li>前端团队: BeAShaper*, Arurururu, Ecer23</li>
+<li>后台团队: longjj*, Yunglinjy, liuzht</li>
+</ul>
+
+<p>名字里带有 * 表示他/她是分项负责人</p>
+
+<h1 id="investigation">Investigation</h1>
+
+<p><a href="http://naotu.baidu.com/file/21d8788ebe4fca8f2860b5ac30fa0974?token=131e22ee5b70f85e">🦕项目流程图传送门</a>，密码是 <code>9PsW</code></p>
+
+<h2 id="1-选题方向">1 选题方向</h2>
+
+<h3 id="1-1-研究目的">1.1 研究目的</h3>
+
+<p>调查当前社会青年人群对于点餐软件/程序的使用状况，探索一种适用于常规小餐店的点餐服务程序，并对国内市场上常见的点餐相关的软件应用进行竞品分析，确定必须服务和优化用户体验的服务。</p>
+
+<h3 id="1-2-市场现状">1.2 市场现状</h3>
+
+<p>随着社会经济快速发展，人们的消费水平有了普遍的提高，在吃食上有了更多可选的追求，然而在外吃饭时会经常性的发生“”排队点餐”的问题，消费者的时间大量用于排队等待点餐的情况，同时在点餐过程中还可能会出现服务员无法及时实现消费者的下单需求。</p>
+
+<h3 id="1-3-目标人群">1.3 目标人群</h3>
+
+<p>主要对象为年龄段18~28的青年人群，熟悉使用手机app，有微信支付/支付宝支付等在线付款的使用经历，具备现代化的生活消费方式。</p>
+
+<h2 id="2-竞品分析">2 竞品分析</h2>
+
+<h3 id="2-1-竞品选择">2.1 竞品选择</h3>
+
+<ul>
+<li>目的：进一步了解产品所属相关领域的发展程度和前景，对竞品进行多方面分析，探索产品的竞争优势，并对产品今后的设计提供参考方向和建议。</li>
+<li>过程：选择生活边常见的点餐小程序进行分析，如i麦代劳、CoCo都可手机点单</li>
+</ul>
+
+<h3 id="2-2-竞品分析">2.2 竞品分析</h3>
+
+<ul>
+<li>CoCo都可手机点单
+
+<ul>
+<li>目标人群：喜欢喝饮品的人群</li>
+<li>产品定位：即时使用的下单小程序</li>
+<li>设计特点：色调明亮，提供服务周全合理</li>
+<li>产品优劣：</li>
+<li>优点：提供定位系统，操作简单，可分预约订单和即时订单</li>
+<li>缺点：功能单一，交互一般</li>
+</ul></li>
+<li>麦当劳
+
+<ul>
+<li>目标人群：喜欢快餐文化的人群</li>
+<li>产品定位：微信小程序</li>
+<li>设计特点：功能多样，有点餐、积分商城、麦有礼等使用模块</li>
+<li>产品优劣：</li>
+<li>优点：提供服务种类较多</li>
+<li>缺点：产品附加功能太多，订单信息过于隐蔽，显示上不明确</li>
+</ul></li>
+</ul>
+
+<h3 id="2-3-竞品启发">2.3 竞品启发</h3>
+
+<ul>
+<li>产品理念：产品应突出自身核心服务，且服务要全面，加大差异化竞争</li>
+<li>产品架构：采用标准化设计，保持与系统架构的统一</li>
+<li>产品视觉：需要更高的使用舒适度，采用和谐的搭配，使色调均衡</li>
+<li>产品交互：首页主功能突出，注意细节的简洁与详略之分，同时避免功能的相互继承、冲突。</li>
+</ul>
+
+<h2 id="3-用户调研">3 用户调研</h2>
+
+<h3 id="3-1-调研目的">3.1 调研目的</h3>
+
+<p>为了了解用户在点餐小程序的确切需求，我们根据竞品分析的结果，采用用户访谈的方法，深入了解我们现在认识的机会点是否真的存在以及发现更多的潜在机会点。</p>
+
+<h3 id="3-2-调研方法">3.2 调研方法</h3>
+
+<p>用户访谈要根据产品设想人群特征，物色符合条件的人，并进行当面访谈或电话访谈</p>
+
+<h3 id="3-3-调研过程">3.3 调研过程</h3>
+
+<ul>
+<li>访谈对象1&ndash;大学生：</li>
+</ul>
+
+<p>Q：请问您对于市场上常见的点餐app或小程序有所了解吗？比如说i麦当劳，美团外等。。</p>
+
+<p>A：有使用过，像在麦当劳时就是用小程序点餐的。</p>
+
+<p>Q：那请问您使用这个小程序的理由是什么？</p>
+
+<p>A：方便嘛，不用排队点餐。</p>
+
+<p>Q：在使用小程序的时候有遇到什么问题吗？</p>
+
+<p>A：它的订单显示比较奇怪，不好找，而且有时候会出现已付款但订单失败的问题。</p>
+
+<p>分析：使用点餐小程序可以帮助避免排队点餐的问题，但小程序自身的问题如设计不合理或显示不清楚会使用户感到困惑。</p>
+
+<ul>
+<li>访谈对象2&ndash;青年白领（有点餐小程序的使用经历）：</li>
+</ul>
+
+<p>Q：请问您平时在外吃饭的时候会经常使用到点餐小程序吗？</p>
+
+<p>A：不多吧，大部分的时候都是直接跟商家说然后下单，而且也很少有商家使用这种小程序。</p>
+
+<p>Q：如果可以选择使用点餐小程序的话你愿意使用吗？</p>
+
+<p>A：看情况吧，如果需要排队点餐的话我会选择使用小程序。</p>
+
+<p>Q：您觉得点餐小程序有什么比较吸引您的地方吗？比如说它的设计、使用方式。。</p>
+
+<p>A：没什么特别吸引的地方吧，一般就是为了图个方便，平时手机使用得比较多，所以用这种小程序不怎么抵抗，而且有些小程序做得也确实挺精致的，用起来挺顺手的。</p>
+
+<p>分析：使用点餐小程序的核心在于为人们带来便利，其次在设计和使用上的合理可以增强人们的体验感。</p>
+
+<ul>
+<li>访谈对象3&ndash;青年工人（有点餐小程序的使用经历但不喜欢使用）</li>
+</ul>
+
+<p>Q：请问您对于点餐小程序的使用有什么不满意的地方吗？</p>
+
+<p>A：使用起来感觉不方便，登录麻烦，选餐麻烦，还不如直接问店员要菜单呢</p>
+
+<p>Q：如果有一款操作友好简单的点餐小程序你会愿意使用吗？</p>
+
+<p>A：可以考虑使用，如果它能给我带来一些方便的话。</p>
+
+<p>Q：除了使用操作上的问题外，您还有什么其他对于点餐小程序的意见吗？</p>
+
+<p>A：希望上面提供的信息能准确，遇到有一些信息甚至是过期了的。</p>
+
+<p>分析：点餐小程序不仅需要满足人们的客观需要，同时在操作上要合理设定，满足不同群体的使用要求。</p>
+
+<h3 id="3-4-调研总结">3.4 调研总结</h3>
+
+<p>产品的第一目标是满足用户的客观需求，比如说便利性，为用户带来实际的优质服务体验，其次要根据不同用户的主观需求来改进产品的性能表现，如使用操作要简单友好、外观设置要精美大方。</p>
+
+<h2 id="4-产品概要">4 产品概要</h2>
+
+<p>根据调研结果得到我们前期产品的需求与功能，具体请见如下链接:</p>
+
+<p><a href="https://github.com/rookies-sysu/Dashboard/blob/master/docs/Demand-Analysis.md">https://github.com/rookies-sysu/Dashboard/blob/master/docs/Demand-Analysis.md</a></p>
+
+<h1 id="项目愿景">项目愿景</h1>
+
+<h2 id="1-介绍">1 介绍</h2>
+
+<ul>
+<li>关键术语与词汇表</li>
+<li>我们尝试解决的问题是什么</li>
+<li>我们的商业理由是什么</li>
+<li>涉众是谁？用户是谁？他们各自的需求是什么</li>
+<li>产品的特性是什么</li>
+<li>成果预估</li>
+</ul>
+
+<p>围绕着“便捷”，”准确“，“节约成本”，”模式创新“等中心词汇，我们致力于打造一款广泛推广的手机点餐微信小程序，助力实现线下实体餐厅的智慧化。</p>
+
+<p>今天的餐饮行业，在菜品、地理位置等多方面存在各种竞争，降低成本已经是每个餐饮企业要考虑的问题。而消费者则希望在品尝佳肴的同时，不受等待服务人员点餐，等待结账付款的苦恼。
+商家如果在店内使用我们推出的手机点餐小程序，消费者即可在手机端自助点餐，没有人工点餐的匆忙慌乱，也不会出现误记漏点等人工失误。只需购买一次小程序，即可在日后的经营中从消费者自助点击手机下单，到商家全自动接收订单，改善消费者点餐的体验，同时为商家在人力资源，餐厅经营上节约成本。</p>
+
+<h2 id="2-收益">2 收益</h2>
+
+<p>我们渴望打造出的微信小程序，给餐厅和顾客带来的益处包括但不限于：</p>
+
+<ul>
+<li><strong>节约人力资源</strong></li>
+</ul>
+
+<p>餐厅无需设置专人负责给顾客点餐
+* <strong>节约推广费用</strong></p>
+
+<p>传统餐厅每次修改或增加菜品之后，都要重新制作菜单，反复发放。使用小程序后，系统直接使用电子菜单，后台可随便更改菜单。
+* <strong>增加盈利能力</strong></p>
+
+<p>在人流高峰时，餐厅可避免因服务不周带来的顾客流失
+* <strong>提高双方效率</strong></p>
+
+<p>传统纸菜单从消费者勾选到服务员下单，每桌需要10分钟左右。餐厅使用我们的小程序点菜的方式，图文并茂的电子菜单上有标注推荐菜、时令菜等，顾客选好菜后，点击下单即可完成，通常只需几分钟。</p>
+
+<h1 id="产品特性">产品特性</h1>
+
+<p>我们期望打造出的产品有如下特性：</p>
+
+<ul>
+<li>菜谱多分类、多图多彩，点餐功能简单明了</li>
+<li>通过微信点餐系统后台自由配置菜单信息，随时更换菜单</li>
+<li>同一桌的顾客可以实现多方点餐且购物车同步实时更新</li>
+<li>微信用户点餐后，客户和商家都同时收到信息提醒</li>
+<li>对某菜品分类打标签，如“热卖”、“新品”等</li>
+<li>后台可统计顾客点菜数据及管理顾客信息，便于实现推广</li>
+<li>顾客可以在小程序内连续下单，账单累计</li>
+</ul>
+
+<p>我们预计我们的项目可以在验收之前，完成除调用微信接口与发布上线等需在微信官方备案之外且用企业号开发之外的所有功能。</p>
+
+<h1 id="requirement-specification">Requirement Specification</h1>
+
+<p><img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/Usecase_Diagram.png" alt="用例图" /></p>
+
+<p><a href="https://github.com/rookies-sysu/Dashboard/blob/master/docs/Demand-Analysis.md">需求分析</a></p>
+
+<h1 id="ui-design">UI Design</h1>
+
+<h2 id="version-0-1-week-3-week-6">Version 0.1 (Week 3 ~ Week 6)</h2>
+
+<h3 id="总览">总览</h3>
+
+<p>第一版设计思路主要如下
+- 逻辑上按照现有常见的点餐小程序设计思路，对菜品进行分类，然后用列表的形式对单个菜品展现。已有的点餐程序逻辑较为清晰，这里直接沿用
+  1. 找到对应分类
+  2. 选择对应分类下的菜品
+  3. 切换分类继续选择
+  4. 进入购物车结算
+- 视觉效果上，由于传统点餐程序（例如麦当劳和美团外卖等）类别是放在左边的，所以界面整体显得很拥挤。为了解决拥挤的问题，v0.1中我牺牲掉了操作的简便性（将菜品细节放到二级菜单），而换来了足够流畅的空间表达，整体界面注入了足够的空气。同时，在卡片（Material &amp; iOS10+）、磁贴（UWP）和扁平（iOS7~9）三种设计思路中选择卡片的陈列方式，因为点餐界面需要展现足够多的信息，磁贴的表达能力不够强，纯色块反而会抢走图片的风头；同时纯扁平的设计元素已经不再适合当前多维度信息的表达，所以最后采用了卡片作为主要表达手段</p>
+
+<p>整个小程序逻辑上分成两个界面：
+1. 分类浏览界面。
+    分类浏览界面由卡片的形式展现，每个卡片对应一个类别。这样用户可以比较清楚的知道每个类别是干什么的，视觉上也不会显得太拥挤
+    <img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.1/2_%E4%B8%BB%E9%A1%B52.png" alt="categories" />
+2. 菜品列表浏览
+    菜品列表浏览用列表卡片的形式呈现，购物车在右下角有一个小按钮可以随时查看购物车情况。
+    <img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.1/5_%E7%B1%BB%E5%88%AB%E5%86%85%E6%8F%8F%E8%BF%B02.png" alt="details" />
+3. 购物车查看
+    没有太多新颖的地方
+    <img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.1/7_%E8%B4%AD%E7%89%A9%E8%BD%A62.png" alt="carts" /></p>
+
+<h3 id="组件设计思路">组件设计思路</h3>
+
+<ol>
+<li>类别卡片。类别卡片采用 2:1 的长宽比，每张类别卡片不会占用太多空间，同时能提供足够明显的视觉效果</li>
+<li>菜品细节。菜品细节直接用一整行来表示，每个菜品都可以占满整行，同时每张卡片之间有一定间隔，界面不会显得太拥挤</li>
+<li>信息陈列上，主要信息会突出于底层。这里用了颜色或者边框阴影进行突出。每个部分有相应的大标题来指引</li>
+</ol>
+
+<h3 id="自评">自评</h3>
+
+<ol>
+<li>逻辑较为清晰，界面不太拥挤</li>
+<li>操作不够简洁，点菜必须进入二级菜单</li>
+<li>设计语言不够统一，购物车也可以改成卡片式</li>
+</ol>
+
+<h2 id="version-0-2-week-7-now">Version 0.2 (Week 7 ~ Now)</h2>
+
+<h3 id="总览-1">总览</h3>
+
+<p>根据上一版本的思考之后，为了解决操作不流畅（二级菜单）的问题，我引入了底部导航栏。这是一个非常慎重的决定，因为引入底部导航意味着整个小程序承载的信息要足够丰富，否则底部导航会显得十分多余而且占用空间</p>
+
+<p>由于在第二次迭代的讨论中我们希望加入同时点单、推荐系统等功能，所以这个时候我决定对 UI 界面进行大修改
+1. 加入推荐界面。因为需要推荐的菜品有限，同时要足够吸引眼球，所以我用了非常大的正方形卡片来容纳。第一眼看过去只能完整的看到一张卡片，即大部分用户只会被推荐到一个产品，这样推荐效率会非常高
+2. 菜单的分类和细节集中到一个界面。为了便捷性考虑，我最好还是决定把分类和细节集中到一个界面，考虑到界面展示空间的问题，我加入了横向滑动的方式来拓展承载空间。这样用大标题和分割线区分主要类别，而类别菜品细节也有整整一行的空间来承载。同时如果菜品太多，可以点击查看全部浏览类别内所有菜品
+3. 为了比较统一的设计语言，购物车直接用连贯的白色背景、黑色小标题和分割线进行板块的区分。</p>
+
+<p><img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.2/1_Today.png" alt="today" /> <img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.2/2_Menu.png" alt="menu" /> <img src="https://raw.githubusercontent.com/rookies-sysu/Dashboard/master/imgs/UI/v0.2/3_Order.png" alt="Order" /></p>
+
+<h1 id="development-guidelines">Development guidelines</h1>
+
+<h2 id="前端代码规范说明">前端代码规范说明</h2>
+
+<h3 id="wxml规范">wxml规范</h3>
+
+<h4 id="1-标签位置与缩进">1. 标签位置与缩进</h4>
+
+<ul>
+<li>保证块元素、组件的开始符与结束符不在同一行，上下位置对齐，子元素在父元素内缩进两个空格。
+<code>
+&lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot; autoplay=&quot;{{autoplay}}&quot; interval=&quot;{{interval}}&quot; duration=&quot;{{duration}}&quot;&gt;
+&lt;block wx:for=&quot;{{imgUrls}}&quot; wx:key=&quot;unique&quot;&gt;
+  &lt;swiper-item&gt;
+    &lt;image src=&quot;{{item}}&quot; class=&quot;slide-image&quot; /&gt;
+  &lt;/swiper-item&gt;
+&lt;/block&gt;
+&lt;/swiper&gt;
+</code></li>
+<li>尽量避免多余的父标签。</li>
+<li>所有wxml标签必须有结束符<code>&lt;/view&gt;</code> <code>&lt;/block&gt;</code> <code>&lt;/button&gt;</code>等。</li>
+</ul>
+
+<h4 id="2-标签属性顺序">2. 标签属性顺序</h4>
+
+<ul>
+<li><code>class</code> （class是为高而复用组件设计的，所以所以应处在第一位）</li>
+<li><code>id</code>、<code>name</code>（id更加具体且应该尽量少使用，所以将它放在第二位）</li>
+<li><code>wx:if</code>、<code>wx:else</code>、<code>wx:for</code></li>
+<li><code>wx:data</code></li>
+</ul>
+
+<h4 id="3-id-class命名规则">3. id/class命名规则</h4>
+
+<ul>
+<li>遵循“内容优先，表现为辅”的基本原则
+&ndash; 首先根据内容命名，如header、footer。若根据内容无法找到合适的命名，再结 合表现进行辅助，如col-main、blue-box。</li>
+<li>一律小写，多个单词以&rsquo;-&lsquo;连接
+&ndash; 不能使用下划线和驼峰命名法，如main-nav。可基于最近的父元素名称作为前缀。</li>
+<li>在不影响语义的情况下，可适当使用缩写
+&ndash; 缩写只用来表示结构，如col、nav、btn等，不可自造缩写。</li>
+<li>避免广告拦截词
+&ndash; ad、ads、adv、banner、sponsor、gg、guangg、guanggao等，页面中尽量避免采用以上词汇来命名。</li>
+</ul>
+
+<h4 id="4-注释规范">4. 注释规范</h4>
+
+<p>页面中使用注释划分结构块。</p>
+
+<pre><code class="language-html">&lt;view&gt;
+  &lt;!-- 顶部轮播图 --&gt;
+  &lt;swiper indicator-dots=&quot;{{indicatorDots}}&quot; autoplay=&quot;{{autoplay}}&quot; interval=&quot;{{interval}}&quot; duration=&quot;{{duration}}&quot;&gt; ...
+  &lt;/swiper&gt;
+  
+  &lt;!-- 左侧菜单 --&gt;
+  &lt;view class=&quot;left-menu&quot;&gt; ...
+  &lt;/view&gt;
+  
+  &lt;!-- 右侧菜单 --&gt;
+  &lt;scroll-view class=&quot;right-menu&quot; scroll-y=&quot;true&quot;  bindscroll=&quot;scroll&quot; scroll-into-view=&quot;{{toView}}&quot; scroll-top=&quot;{{scrollTop}}&quot; enable-back-to-top=&quot;true&quot;&gt; ...
+  &lt;/scroll-view&gt;
+
+  &lt;!-- 底部 --&gt;
+  &lt;view class=&quot;shoppingCart-bar&quot; wx:if=&quot;{{loading}}&quot;&gt; ...
+  &lt;/view&gt;
+&lt;/view&gt;
+
+&lt;!-- 购物车 --&gt;
+&lt;view class=&quot;drawer-screen&quot; bindtap=&quot;showCartList&quot; data-statu=&quot;close&quot; wx:if=&quot;{{showCart}}&quot;&gt; ...
+&lt;/view&gt;
+</code></pre>
+
+<h3 id="wxcs规范">wxcs规范</h3>
+
+<h4 id="1-属性顺序">1. 属性顺序</h4>
+
+<ul>
+<li>位置属性（<code>position</code>、<code>top</code>、<code>right</code>、<code>z-index</code>、<code>display</code>、<code>float</code>等）</li>
+<li>大小（<code>width</code>、<code>height</code>、<code>margin</code>、<code>padding</code>等）</li>
+<li>背景（<code>background</code>、<code>border</code>等）</li>
+<li>文字系列（<code>font</code>、<code>line-height</code>、<code>letter-spacing</code>、<code>color</code>、<code>text-align</code>等）</li>
+
+<li><p>其他（<code>animation</code>、<code>transition</code>等）</p>
+
+<pre><code class="language-html">.left-menu{
+position: absolute;
+left:0px;
+z-index: 10;
+width:160rpx;
+font-size:28rpx;
+}
+.left-menu-unselect{
+padding-left:10rpx;
+height:72rpx;
+border-bottom:1px solid #E3E3E3;
+background-color:#F9F9F9;
+color: #6C6C6C;
+}
+</code></pre>
+
+<h4 id="2-属性使用缩写">2.属性使用缩写</h4></li>
+</ul>
+
+<p>在需要显示地设置所有值的情况下，应当尽量限制使用简写形式的属性声明。常见的滥用简写属性声明的情况如下：
+<code>padding</code>、<code>margin</code>、<code>font</code>、<code>background</code>、<code>border</code>、<code>border-radius</code></p>
+
+<blockquote>
+<p>另外，对于#aabbcc形式的颜色值也可简化为#abc，这样精简代码同时又能提高用户的阅读体验。</p>
+</blockquote>
+
+<h3 id="js规范">JS规范</h3>
+
+<h4 id="1-语言规范">1. 语言规范</h4>
+
+<h5 id="1-1-变量">1.1 变量</h5>
+
+<p>声明变量必须加上<code>var</code>关键字。
+&gt; 当你没有写 var, 变量就会暴露在全局上下文中, 这样很可能会和现有变量冲突. 另外, 如果没有加上, 很难明确该变量的作用域是什么。</p>
+
+<h5 id="1-2-块内函数声明">1.2 块内函数声明</h5>
+
+<p>不要在块内声明一个函数。</p>
+
+<pre><code>if(x) {
+    function foo() {}
+}
+</code></pre>
+
+<p>如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:</p>
+
+<pre><code>if(x) {
+    var foo = function () {}
+}
+</code></pre>
+
+<h5 id="1-3-this">1.3 <code>this</code></h5>
+
+<p>仅在对象构造器，方法，闭包中使用。</p>
+
+<h5 id="1-4-命名方式">1.4 命名方式</h5>
+
+<ul>
+<li>变量名多个词以下划线连接</li>
+<li>函数名以驼峰式命名</li>
+</ul>
+
+<h4 id="2-编码风格">2. 编码风格</h4>
+
+<h5 id="2-1-明确作用域">2.1 明确作用域</h5>
+
+<p>任何时候都要明确作用域，提高可移植性和清晰度，不要依赖于作用域链中的 window 对象。</p>
+
+<h5 id="2-2-代码风格化">2.2 代码风格化</h5>
+
+<p>数组和对象的初始化，如果初始值不是很长，就保持写在单行上。</p>
+
+<pre><code>var arr = [ 1, 2, 3 ];  //  space after [ or before ] according to ESLint standard.
+var obj = { a : 1, b : 2, c : 3 };  //  space after { or before }.
+</code></pre>
+
+<p>初始值占用多行时，缩进四个空格。</p>
+
+<pre><code>// Object initializer.
+imgUrls: [
+    '../../images/1.jpg',
+    '../../images/2.jpg',
+    '../../images/3.jpg',
+    '../../images/4.jpg',
+    '../../images/5.jpg'
+    ],
+
+</code></pre>
+
+<h5 id="2-3-引号的使用">2.3 引号的使用</h5>
+
+<p>单引号<code>''</code>优于双引号<code>&quot;&quot;</code></p>
+
+<h5 id="2-4-过长的单行予以换行">2.4 过长的单行予以换行</h5>
+
+<p>换行应选择在操作符和标点符号之后。</p>
+
+<pre><code>if (oUser.nAge &lt; 30
+    &amp;&amp; oUser.bIsChecked === true
+    || oUser.sName === 'admin') {
+    // code
+}
+</code></pre>
+
+<h5 id="2-5-循环的使用">2.5 循环的使用</h5>
+
+<p>在循环中，尽量使用变量先获取到循环的次数，再放入循环中进行判断，否则非常影响程序性能。</p>
+
+<pre><code>// 推荐
+var listData = this.data.listData;
+for (var i = 0; i &lt; listData.length; i++) {
+    for (var j = 0; j &lt; listData[i].foods.length; j++) {
+        listData[i].foods[j].number = 0;
+    }
+}
+// 不推荐
+for (var i = 0; i &lt; this.data.listData.length; i++) {
+    for (var j = 0; j &lt; listData[i].foods.length; j++) {
+        listData[i].foods[j].number = 0;
+    }
+}
+</code></pre>
+
+<h5 id="2-6-注释">2.6 注释</h5>
+
+<h6 id="2-6-1-函数注释">2.6.1 函数注释</h6>
+
+<pre><code>/**
+ * 简述
+ *
+ * 功能详细描述
+ *
+ * @param &lt;String&gt; arg1 参数1
+ * @param &lt;Number&gt; arg2 参数2，默认为0
+ * @return &lt;Boolean&gt; 判断xxx是否成功
+ */
+ function fooFunction (arg1, arg2) {
+    // code
+ }
+</code></pre>
+
+<h6 id="2-6-2-语句注释">2.6.2 语句注释</h6>
+
+<p>单行注释：</p>
+
+<ul>
+<li>单独一行：// 与注释文字之间保留一个空格；</li>
+<li>在代码后面添加注释：//与代码之间保留一个空格，并且//与注释文字之间保留一个空格；</li>
+<li>//与代码之间保留一个空格。
+<code>
+// 调用了一个函数；1)单独在一行
+setTitle();
+var maxCount = 10; // 设置最大量；2)在代码后面注释
+// setName(); // 3)注释代码
+</code></li>
+</ul>
+
+<h3 id="设计视觉规范">设计视觉规范</h3>
+
+<h4 id="1-字体">1. 字体</h4>
+
+<p>微信内字体的使用与所运行的系统字体保持一致，常用字号为20，18，17，16，14，13，11（pt），使用场景具体如下：
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/8Font.color.png" alt="此处输入图片的描述" /></p>
+
+<h4 id="2-字体颜色">2. 字体颜色</h4>
+
+<p><img src="https://developers.weixin.qq.com/miniprogram/design/image/8Font.png" alt="此处输入图片的描述" />
+主内容 Black 黑色，次要内容 Grey 灰色；时间戳与表单缺省值 Light 灰色；大段的说明内容而且属于主要内容用 Semi 黑。
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/8Font.color2.png" alt="此处输入图片的描述" />
+蓝色为链接用色，绿色为完成字样色，红色为出错用色 Press 与 Disable 状态分别降低透明度为20%与10%。
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/8Font.color3.png" alt="此处输入图片的描述" /></p>
+
+<h4 id="3-列表">3. 列表</h4>
+
+<p><img src="https://developers.weixin.qq.com/miniprogram/design/image/9List.png" alt="此处输入图片的描述" /></p>
+
+<h4 id="4-表单输入">4. 表单输入</h4>
+
+<p><img src="https://developers.weixin.qq.com/miniprogram/design/image/10Input.png" alt="此处输入图片的描述" /></p>
+
+<h4 id="5-按钮">5. 按钮</h4>
+
+<p><img src="https://developers.weixin.qq.com/miniprogram/design/image/11button.png" alt="此处输入图片的描述" />
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/11button2.png" alt="此处输入图片的描述" />
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/11button3.png" alt="此处输入图片的描述" />
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/11button4.png" alt="此处输入图片的描述" /></p>
+
+<h4 id="6-图标">6. 图标</h4>
+
+<p><img src="https://developers.weixin.qq.com/miniprogram/design/image/12icon.png" alt="此处输入图片的描述" />
+<img src="https://developers.weixin.qq.com/miniprogram/design/image/13titlebar.jpg" alt="此处输入图片的描述" /></p>
+
+<h2 id="后端代码规范说明">后端代码规范说明</h2>
+
+<p>后端：<a href="http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">google 后台开发指南</a></p>
+
+<h1 id="documentation-links">Documentation Links</h1>
+
+<ul>
+<li><a href="https://github.com/rookies-sysu/Dashboard/blob/master/docs/Iterations.md">迭代文档</a></li>
+<li><a href="https://github.com/rookies-sysu/Dashboard/blob/master/docs/Meetings.md">会议记录</a></li>
+<li><a href="https://github.com/rookies-sysu/Dashboard/blob/master/docs/Demand-Analysis.md">需求分析</a></li>
+</ul>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2017-2018 Tiny Hippo 博客 🎉</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" target="_blank">Hugo❤️️</a></span>
+  <span>&middot;</span>
+  <span>Designed by <a href="http://21beats.com/" target="_blank">️21beats⚡️</a></span>
+</footer>
+<script src="https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" data-no-instant></script>
+<script data-no-instant>
+  hljs.initHighlightingOnLoad();
+  menuToggle();
+  InstantClick.on('change', function() {
+    var blocks = document.querySelectorAll('pre code');
+    for (var i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i]);
+    }
+    menuToggle();
+  });
+  function menuToggle() {
+    var $toggle = document.querySelector('.menu-toggle');
+    if (!$toggle.offsetParent) {
+      return;
+    }
+    var $body = document.querySelector('body');
+    $toggle.addEventListener('click', function() {
+      $body.classList.toggle('noscroll');
+    }, false);
+  }
+</script>
+</body>
+</html>
+
