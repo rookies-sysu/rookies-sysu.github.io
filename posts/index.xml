@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Tiny Hippo 博客</title>
-    <link>http://rookies-sysu.github.io/posts/</link>
+    <link>http://rookies-sysu.github.io/Dashboard/posts/</link>
     <description>Recent content in Posts on Tiny Hippo 博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Apr 2018 22:50:48 +0800</lastBuildDate>
     
-	<atom:link href="http://rookies-sysu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://rookies-sysu.github.io/Dashboard/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tiny Hippo 团队作业</title>
-      <link>http://rookies-sysu.github.io/posts/homework1/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/homework1/</link>
       <pubDate>Sun, 15 Apr 2018 22:50:48 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/homework1/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/homework1/</guid>
       <description>团队成员：彭高、马晓鹤、彭彩莹、罗剑杰、林景仰、刘钟涛
 ❗ 注意，团队作业发布已经转移至 Tiny hippo 团队作业 Dashboard
 项目网站传送门🛴
@@ -26,10 +26,10 @@ Homework 3 (lesson 8)  ⭐update⭐ About 项目规划 Team Profile 团队组建
     
     <item>
       <title>Flask-SQLAlchemy 学习报告</title>
-      <link>http://rookies-sysu.github.io/posts/flask_sql/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/flask_sql/</link>
       <pubDate>Sun, 15 Apr 2018 22:21:38 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/flask_sql/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/flask_sql/</guid>
       <description>实验环境 Ubuntu 16.04 LTS
 Anaconda 5.1
 python 3.6
@@ -43,19 +43,19 @@ python 3.6
     
     <item>
       <title>微信小程序事件和视图渲染</title>
-      <link>http://rookies-sysu.github.io/posts/wechat_applet/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/wechat_applet/</link>
       <pubDate>Sun, 15 Apr 2018 20:43:34 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/wechat_applet/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/wechat_applet/</guid>
       <description>微信小程序事件  什么是事件 事件类别 事件冒泡 事件绑定 事件对象详解  什么是事件 ####事件 * 一种用户行为 当用户长按图片、拖动等 * 一种通讯方式 当用户进行触摸屏幕、点击按钮，事件发生在UI层，UI层将信息发送给逻辑代码 ####事件的类别 * 点击事件 tap * 长按事件 longtap * 触摸事件 touchstart touchend touchmove touchcancel  touchend：手指触摸到手指离开，是正常的触摸结束  touchcancel：突然来了电话，页面被覆盖，等同于触摸事件被打断 * 其他 submit input 事件冒泡 ```   view 1 view 2 view 3    ``` ``` /**index.wxss**/ .view1 { height: 500rpx; width: 100%; background-color: khaki; } .view2 { height: 400rpx; width: 80%; background-color: rosybrown; } .</description>
     </item>
     
     <item>
       <title>技术学习报告&lt;1&gt;</title>
-      <link>http://rookies-sysu.github.io/posts/html/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/html/</link>
       <pubDate>Sun, 15 Apr 2018 20:42:59 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/html/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/html/</guid>
       <description>由于个人主要负责任务是前端的工作，因此第一阶段主要学习了html、css、JavaScript和微信小程序的框架。
 ###1、html的学习 超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。 通过html可以编写静态网页，也可以通过编写js脚本添加用户与网页的交互。 以下为一小段html文本：
 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;菜鸟教程(runoob.com)&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;我的第一个标题&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;我的第一个段落。&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  &amp;lt; !DOCTYPE html &amp;gt;声明为 HTML5 文档 &amp;lt; html &amp;gt; 元素是 HTML 页面的根元素 &amp;lt; head &amp;gt; 元素包含了文档的元（meta）数据 &amp;lt; title &amp;gt; 元素描述了文档的标题 &amp;lt; body &amp;gt; 元素包含了可见的页面内容 &amp;lt; h1 &amp;gt; 元素定义一个大标题 &amp;lt; p &amp;gt; 元素定义一个段落  将看到这样的效果  我的第一个标题 我的第一个段落。
@@ -65,10 +65,10 @@ python 3.6
     
     <item>
       <title>Docker 构建镜像入门，以 Python Flask 为例</title>
-      <link>http://rookies-sysu.github.io/posts/docker/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/docker/</link>
       <pubDate>Sun, 15 Apr 2018 20:06:57 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/docker/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/docker/</guid>
       <description>[TOC]
  原文链接：Docker 构建镜像入门，以 Python Flask 为例
 为了完成中山大学系统分析与设计课程，在项目作业仓库中重新发布一次技术博客
@@ -87,10 +87,10 @@ longj@longj-Daydream:~$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORT
     
     <item>
       <title>Flask 学习笔记</title>
-      <link>http://rookies-sysu.github.io/posts/flask/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/flask/</link>
       <pubDate>Sun, 15 Apr 2018 20:05:48 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/flask/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/flask/</guid>
       <description>1.Flask的配置 使用virtualenv将应用隔离在一个虚拟环境中，该虚拟环境包含了应用依赖的文件的文件夹，在linux系统下安装virtualenv的操作：
 $ pip install virtualenv  随后利用virtualenv创建虚拟环境，文件夹名为venv：
 $ virtualenv venv New python executable in venv/bin/python Installing setuptools, pip...done.  通过运行该文件夹下的bin/activate脚本来激活虚拟环境
@@ -106,10 +106,10 @@ $ source ~/venv/bin/activate  此时虚拟环境已运行，在该环境下安�
     
     <item>
       <title>项目管理经验分享（一）</title>
-      <link>http://rookies-sysu.github.io/posts/management/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/management/</link>
       <pubDate>Sun, 15 Apr 2018 19:24:24 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/management/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/management/</guid>
       <description>作为团队的 PM，要让整个团队 run 起来不是一件容易的事情。团队集结完毕后，需要立刻熟悉团队成员的个性，并且要尽快进入团队协作的状态。同时，对于一个团队项目，需要的技术栈，对应技术栈需要分配的成员也是在不断探索，所以在这里记录下当 PM 的一些体会。
 任务安排 我们团队有四个男生，两个女生，还有一名外援。外援由于一些特殊原因安排他去做一个相对独立的部分，所以接下来不会仔细介绍。其余团队成员我会用他们的 Github ID 或者 Github ID 简称来代替。
 在第一次会议中，大家介绍了自己的掌握的知识栈了。基本所有人都只是会一些前端技术栈，除了
@@ -125,10 +125,10 @@ UI设计 这次我 ECer23 同时也是设计师。虽然这么做不正规但是
     
     <item>
       <title>About</title>
-      <link>http://rookies-sysu.github.io/posts/about/</link>
+      <link>http://rookies-sysu.github.io/Dashboard/posts/about/</link>
       <pubDate>Thu, 12 Apr 2018 10:54:50 +0800</pubDate>
       
-      <guid>http://rookies-sysu.github.io/posts/about/</guid>
+      <guid>http://rookies-sysu.github.io/Dashboard/posts/about/</guid>
       <description> 小河马点餐是一个微信点餐小程序。它以微信为入口，使用手机进行点餐。小河马点餐相比传统点餐服务，除了支持传统的浏览、下单、付款的传统服务之外，还有以下几个特点：
  支持多人同时点餐 更加人性化的UI设计 and more  Team profile 目前，小河马团队共6人，他们是：[Ecr23 - 彭高]()、[longjj - 罗剑杰]()、[BeAShaper - 马晓鹤]()、[Arurururu - 彭彩莹]()、[Yunglinjy - 林景仰]()、[liuzt - 刘钟涛]()。目前，我们的分工如下
  项目经理: Ecer23* 前端团队: BeAShaper*, Arurururu, Ecer23 后台团队: longjj*, Yunglinjy, liuzht  名字里带有 * 表示他/她是分项负责人
